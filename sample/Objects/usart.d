@@ -1,0 +1,9 @@
+.\objects\usart.o: ..\Lib\src\usart.cpp
+.\objects\usart.o: ..\Lib\inc\usart.h
+.\objects\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\usart.o: ..\Lib\inc\sys.h
+.\objects\usart.o: ..\Lib\stm32f10x.h
+.\objects\usart.o: ..\Lib\core_cm3.h
+.\objects\usart.o: ..\Lib\system_stm32f10x.h
+.\objects\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

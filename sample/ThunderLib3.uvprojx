@@ -186,7 +186,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -388,6 +388,11 @@
               <FileName>sys.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Lib\src\sys.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usart.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Lib\src\usart.cpp</FilePath>
             </File>
           </Files>
         </Group>
