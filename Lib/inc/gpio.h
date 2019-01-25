@@ -106,10 +106,11 @@ public:
     ~GPIO();
     static void Init(GPIO_TypeDef* GPIOn,GPIO_InitTypeDef* Init_struct);
     static uint16_t read(GPIO_TypeDef* GPIOn,uint16_t Pin);
+    static void set(GPIO_TypeDef* GPIOn,uint16_t Pin,int state);
     uint16_t read();
     void set(int state);
     void toggle();
-    
+
 };
 
 

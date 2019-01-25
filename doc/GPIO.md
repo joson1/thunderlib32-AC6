@@ -65,3 +65,22 @@ uint16_t GPIO::read()
 
 返回当前实例对应的引脚状态，需在之前将对应的引脚设置为输入
 
+
+uint16_t GPIO::read(GPIO_TypeDef* GPIOn,uint16_t Pin)
+
+
+返回指定IO口的状态，需在之前将对应的引脚设置为输入
+```c++
+uint16_t IN1;
+uint16_t IN2;
+uint16_t IN3;
+
+IN1=GPIO::read(GPIOA,GPIO_PIN_1) //读取GPIOA1的状态
+
+IN2=GPIO::read(GPIOB,GPIO_PIN_1|GPIO_PIN_12) //读取GPIOB1 和 GPIOB12 的状态，存入IN2中 
+                                             //IN2的第1位对应读取GPIOB1的真实状态，IN2的第12位对应GPIOB12的真实状态
+
+IN3 = GPIO::read(GPIOB,GPIO_PIN_All)  // 将GPIOB所有的引脚状态读取出来，存入IN3中
+
+```
+

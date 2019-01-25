@@ -165,3 +165,14 @@ uint16_t GPIO::read(GPIO_TypeDef* GPIOn,uint16_t Pin)
 		return GPIOn->IDR & Pin;
 	}
 }
+
+void GPIO::set(GPIO_TypeDef* GPIOn,uint16_t Pin, int state)
+{
+	if(state)
+	{
+		GPIOn->ODR |= Pin;
+	}else
+	{
+		GPIOn->ODR &= (~Pin);
+	}
+}
