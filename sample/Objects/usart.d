@@ -7,3 +7,6 @@
 .\objects\usart.o: ..\Lib\core_cm3.h
 .\objects\usart.o: ..\Lib\system_stm32f10x.h
 .\objects\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
+.\objects\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\rt_misc.h
+.\objects\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

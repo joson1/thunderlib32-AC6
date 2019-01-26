@@ -1,21 +1,67 @@
 #include "usart.h"
 #include "sys.h"
 #include "stdarg.h"
+#include <time.h>
+#include <rt_misc.h>
 
 
-int std::fputc(int ch, std::FILE* stream)
+#pragma import(__use_no_semihosting_swi)
+struct std::__FILE { int handle; /* Add whatever you need here */ };
+	
+std::FILE std::__stdin;
+std::FILE std::__stdout;
+std::FILE std::__stderr;
+
+
+
+extern "C"
 {
-	while((USART1->SR&0X40)==0);//等待上一次串口数据发送完成  
-	USART1->DR = (u8) ch;      	//写DR,串口1将发送数据
-	return ch;
+
+	int sendchar(int ch)
+	{
+		while((USART1->SR&0X40)==0);//等待上一次串口数据发送完成  
+		USART1->DR = (u8) ch;      	//写DR,串口1将发送数据
+		return ch;
+	}
+
+	int getkey()
+	{
+		while(!(USART1->SR&0x20));
+		return USART1->DR;
+	}
+
+	int fputc(int ch, FILE *f) {
+	return (sendchar(ch));
+	}
+
+	int fgetc(FILE *f) {
+	return (sendchar(getkey()));
+	}
+
+
+	int ferror(FILE *f) {
+	/* Your implementation of ferror */
+	return EOF;
+	}
+
+
+	void _ttywrch(int ch) {
+	sendchar (ch);
+	}
+
+
+	void _sys_exit(int return_code) {
+	while (1);    /* endless loop */
+	}
+
+
+
+
+
 }
 
 
-int std::fgetc(FILE *f)
-{
-	while(!(USART1->SR&0x20));
-	return USART1->DR;
-}
+
 //串口1中断服务程序
 //注意,读取USARTx->SR能避免莫名其妙的错误   	
 uint8_t USART_RX_BUF[USART_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
@@ -27,34 +73,34 @@ uint16_t USART_RX_STA=0;       //接收状态标记
   
 void USART1_IRQHandler(void)
 {
-	u8 res;	
-#if SYSTEM_SUPPORT_OS 		//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
-	OSIntEnter();    
-#endif
-	if(USART1->SR&(1<<5))	//接收到数据
-	{	 
-		res=USART1->DR; 
-		if((USART_RX_STA&0x8000)==0)//接收未完成
-		{
-			if(USART_RX_STA&0x4000)//接收到了0x0d
-			{
-				if(res!=0x0a)USART_RX_STA=0;//接收错误,重新开始
-				else USART_RX_STA|=0x8000;	//接收完成了 
-			}else //还没收到0X0D
-			{	
-				if(res==0x0d)USART_RX_STA|=0x4000;
-				else
-				{
-					USART_RX_BUF[USART_RX_STA&0X3FFF]=res;
-					USART_RX_STA++;
-					if(USART_RX_STA>(USART_REC_LEN-1))USART_RX_STA=0;//接收数据错误,重新开始接收	  
-				}		 
-			}
-		}  		 									     
-	}
-#if SYSTEM_SUPPORT_OS 	//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
-	OSIntExit();  											 
-#endif
+// 	u8 res;	
+// #if SYSTEM_SUPPORT_OS 		//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
+// 	OSIntEnter();    
+// #endif
+// 	if(USART1->SR&(1<<5))	//接收到数据
+// 	{	 
+// 		res=USART1->DR; 
+// 		if((USART_RX_STA&0x8000)==0)//接收未完成
+// 		{
+// 			if(USART_RX_STA&0x4000)//接收到了0x0d
+// 			{
+// 				if(res!=0x0a)USART_RX_STA=0;//接收错误,重新开始
+// 				else USART_RX_STA|=0x8000;	//接收完成了 
+// 			}else //还没收到0X0D
+// 			{	
+// 				if(res==0x0d)USART_RX_STA|=0x4000;
+// 				else
+// 				{
+// 					USART_RX_BUF[USART_RX_STA&0X3FFF]=res;
+// 					USART_RX_STA++;
+// 					if(USART_RX_STA>(USART_REC_LEN-1))USART_RX_STA=0;//接收数据错误,重新开始接收	  
+// 				}		 
+// 			}
+// 		}  		 									     
+// 	}
+// #if SYSTEM_SUPPORT_OS 	//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
+// 	OSIntExit();  											 
+// #endif
 } 
 
 void _usart1::begin(uint32_t bound)
