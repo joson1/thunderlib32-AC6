@@ -75,7 +75,32 @@ GPIO::Init(GPIOC,&init);
 
 
 #### 设置引脚状态
+void GPIO::set(int state)
 
+
+设置当前实例对应的引脚状态 state为要设置的状态 0 或 1
+
+```c++
+
+  GPIO LED1(GPIOC,GPIO_PIN_13,GPIO_MODE_OUTPUT_PP);
+  LED1.set(0);
+
+```
+
+
+GPIO::set(GPIO_TypeDef* GPIOn,uint16_t Pin, int state)
+
+
+设置任意IO的引脚状态，需要在之前将其初始化为输出
+
+```c++
+
+GPIO::set(GPIOB,GPIO_PIN_5,0);  //设置GPIOB5为0
+
+GPIO::set(GPIOB,GPIO_PIN_2|GPIO_PIN_7,0);  // 设置GPIOB2和GPIOB7为0
+
+GPIO::set(GPIOE,GPIO_PIN_All,1); //设置GPIOE所有的引脚为1
+```
 
 #### 读取引脚状态
 uint16_t GPIO::read()
