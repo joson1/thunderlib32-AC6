@@ -102,17 +102,28 @@ void _usart1::begin(uint32_t pclk2,uint32_t bound)
 	//波特率设置
  	USART1->BRR=mantissa; // 波特率设置	 
 	USART1->CR1|=0X200C;  //1位停止,无校验位.
-#if EN_USART1_RX		  //如果使能了接收
+
 	//使能接收中断 
 	USART1->CR1|=1<<5;    //接收缓冲区非空中断使能	    	
-	MY_NVIC_Init(3,3,USART1_IRQn,2);//组2，最低优先级 
-#endif    
+	sys.MY_NVIC_Init(3,3,USART1_IRQn,2);//组2，最低优先级 
+
+}
+
+inline void _usart1::sendChar(char p)
+{
+	while((USART1->SR&0X40)==0);
+	USART1->DR = p;
 }
 
 void _usart1::println(unsigned char* p)
 {
-    while(*p){
-        printf("%s\r\n",p);
+    while(*p)
+	{
+		sendChar(*p);
+		p++;
+
     }
+	sendChar('\r');
+	sendChar('\n');
     
 }

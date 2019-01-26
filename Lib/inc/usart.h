@@ -17,6 +17,7 @@ public:
     void begin(uint32_t bound);
     void begin(uint32_t pclk2,uint32_t bound);
     void println(unsigned char* p);
+    inline void sendChar(char p);
 } usart1;
 
 #endif
