@@ -1,7 +1,5 @@
 # GPIO使用方法
 
-## 使用C++语法
-
 ```c++
 #include "gpio.h"
 #include "sys.h"
@@ -58,13 +56,38 @@ GPIO_MODE_INPUT_DOWN		0X8     //下拉输入
 GPIO_MODE_INPUT_ANALOG      0X0	    //模拟输入
 
 ```
+#### GPIO初始化
+方式1： 实例化GPIO并初始化GPIO
+```c++
+GPIO LED1(GPIOC,GPIO_PIN_13,GPIO_MODE_OUTPUT_PP);
+```
+
+
+方式2：仅初始化
+```c++
+GPIO_InitTypeDef init;
+init.Pin = GPIO_PIN_2;
+init.Mode = GPIO_MODE_OUTPUT_PP;
+
+GPIO::Init(GPIOC,&init);
+
+```
+
+
+#### 设置引脚状态
+
 
 #### 读取引脚状态
 uint16_t GPIO::read()
 
 
 返回当前实例对应的引脚状态，需在之前将对应的引脚设置为输入
+```c++
 
+  GPIO KEY1(GPIOC,GPIO_PIN_13,GPIO_MODE_INPUT_UP);
+  bool key = KEY1.read();
+
+```
 
 uint16_t GPIO::read(GPIO_TypeDef* GPIOn,uint16_t Pin)
 
