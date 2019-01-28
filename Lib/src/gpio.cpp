@@ -73,9 +73,13 @@ GPIO::GPIO(GPIO_TypeDef* GPIOX,uint16_t Pin,unsigned char mode)
 		
 	}
 	
+}
 
-
-
+GPIO::GPIO(GPIO_TypeDef* GPIOX,uint16_t Pin)
+{
+	this->GPIOn = GPIOX;
+	this->Pin = Pin;
+	RCC->APB2ENR |= 1<<(((uint32_t)GPIOX-(uint32_t)GPIOA)/1024+2);//使能GPIOx的时钟
 }
 
 
@@ -203,4 +207,16 @@ void GPIO::setmode(unsigned char mode)
 		Pins>>=1;
 		
 	}	
+}
+
+void GPIO::operator = (const uint16_t state)
+{
+	this->set(state);
+
+}
+
+uint16_t GPIO::operator=(const GPIO &P)
+{
+	return this->read(this->GPIOn,this->Pin);
+
 }

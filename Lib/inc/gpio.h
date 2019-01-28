@@ -103,6 +103,7 @@ private:
 public:
 
     GPIO(GPIO_TypeDef* GPIOX,uint16_t Pin,unsigned char mode);
+    GPIO(GPIO_TypeDef* GPIOX,uint16_t Pin);
     ~GPIO();
     static void Init(GPIO_TypeDef* GPIOn,GPIO_InitTypeDef* Init_struct);
     static uint16_t read(GPIO_TypeDef* GPIOn,uint16_t Pin);
@@ -111,7 +112,8 @@ public:
     void set(int state);
     void toggle();
     void setmode(unsigned char mode);
-
+    void operator=(const uint16_t state);
+    uint16_t operator=(const GPIO &P);
 };
 
 
