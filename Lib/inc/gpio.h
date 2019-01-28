@@ -101,7 +101,8 @@ private:
     static void Init_Pin(GPIO_TypeDef *GPIOx, uint8_t pin, uint8_t mode);
     /* data */
 public:
-
+    friend class IIC; 
+    GPIO();
     GPIO(GPIO_TypeDef* GPIOX,uint16_t Pin,unsigned char mode);
     GPIO(GPIO_TypeDef* GPIOX,uint16_t Pin);
     ~GPIO();

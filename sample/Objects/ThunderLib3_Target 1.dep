@@ -1,6 +1,6 @@
 Dependencies for Project 'ThunderLib3', Target 'Target 1': (DO NOT MODIFY !)
-F (..\Lib\src\gpio.cpp)(0x5C4F1181)(--cpp -c --cpu Cortex-M3 -g -O2 --apcs=interwork -I ..\Lib\inc -I ..\Lib --cpp11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
-I (..\Lib\inc\gpio.h)(0x5C4F10FD)
+F (..\Lib\src\gpio.cpp)(0x5C4F2075)(--cpp -c --cpu Cortex-M3 -g -O2 --apcs=interwork -I ..\Lib\inc -I ..\Lib --cpp11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
+I (..\Lib\inc\gpio.h)(0x5C4F2013)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\Lib\stm32f10x.h)(0x4D783CB4)
 I (..\Lib\core_cm3.h)(0x4D523B58)
@@ -23,8 +23,16 @@ I (D:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x57F606B8)
 I (D:\Keil_v5\ARM\ARMCC\include\time.h)(0x57F606B8)
 I (D:\Keil_v5\ARM\ARMCC\include\rt_misc.h)(0x57F606B8)
 I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
+F (..\Lib\src\iic.cpp)(0x5C4F1FDF)(--cpp -c --cpu Cortex-M3 -g -O2 --apcs=interwork -I ..\Lib\inc -I ..\Lib --cpp11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\iic.o --omf_browse .\objects\iic.crf --depend .\objects\iic.d)
+I (..\Lib\inc\iic.h)(0x5C4F2059)
+I (..\Lib\inc\gpio.h)(0x5C4F2013)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
+I (..\Lib\stm32f10x.h)(0x4D783CB4)
+I (..\Lib\core_cm3.h)(0x4D523B58)
+I (..\Lib\system_stm32f10x.h)(0x4D783CAA)
+I (..\Lib\inc\sys.h)(0x5C4AACD7)
 F (.\main.cpp)(0x5C4F11BF)(--cpp -c --cpu Cortex-M3 -g -O2 --apcs=interwork -I ..\Lib\inc -I ..\Lib --cpp11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (..\Lib\inc\gpio.h)(0x5C4F10FD)
+I (..\Lib\inc\gpio.h)(0x5C4F2013)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\Lib\stm32f10x.h)(0x4D783CB4)
 I (..\Lib\core_cm3.h)(0x4D523B58)

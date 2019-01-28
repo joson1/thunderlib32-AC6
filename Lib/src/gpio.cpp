@@ -75,6 +75,12 @@ GPIO::GPIO(GPIO_TypeDef* GPIOX,uint16_t Pin,unsigned char mode)
 	
 }
 
+GPIO::GPIO()
+{
+	this->Pin=0;
+	this->GPIOn = 0;
+}
+
 GPIO::GPIO(GPIO_TypeDef* GPIOX,uint16_t Pin)
 {
 	this->GPIOn = GPIOX;
