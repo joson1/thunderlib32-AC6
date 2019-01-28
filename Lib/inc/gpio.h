@@ -110,6 +110,7 @@ public:
     uint16_t read();
     void set(int state);
     void toggle();
+    void setmode(unsigned char mode);
 
 };
 

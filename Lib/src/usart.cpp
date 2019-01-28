@@ -124,8 +124,8 @@ void _usart1::begin(uint32_t bound)
  	USART1->BRR=mantissa; // 波特率设置	 
 	USART1->CR1|=0X200C;  //1位停止,无校验位.
 	//使能接收中断 
-	USART1->CR1|=1<<5;    //接收缓冲区非空中断使能	    	
-	sys.MY_NVIC_Init(3,3,USART1_IRQn,2);//组2，最低优先级 
+	// USART1->CR1|=1<<5;    //接收缓冲区非空中断使能	    	
+	// sys.MY_NVIC_Init(3,3,USART1_IRQn,2);//组2，最低优先级 
  
 }
 
@@ -150,8 +150,8 @@ void _usart1::begin(uint32_t pclk2,uint32_t bound)
 	USART1->CR1|=0X200C;  //1位停止,无校验位.
 
 	//使能接收中断 
-	USART1->CR1|=1<<5;    //接收缓冲区非空中断使能	    	
-	sys.MY_NVIC_Init(3,3,USART1_IRQn,2);//组2，最低优先级 
+	// USART1->CR1|=1<<5;    //接收缓冲区非空中断使能	    	
+	// sys.MY_NVIC_Init(3,3,USART1_IRQn,2);//组2，最低优先级 
 
 }
 

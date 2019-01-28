@@ -176,3 +176,31 @@ void GPIO::set(GPIO_TypeDef* GPIOn,uint16_t Pin, int state)
 		GPIOn->ODR &= (~Pin);
 	}
 }
+
+void GPIO::setmode(unsigned char mode)
+{
+	uint16_t Pins = this->Pin;
+	uint8_t i;
+
+	for( i = 0; i < 16; i++)
+	{
+		if(Pins&0x01)
+		{
+			*(uint32_t *)((unsigned int)(this->GPIOn)+((i>7)?4:0)) &= ~(0X0000000F<<(4*((i<8)?i:i-8)));//清零Pin口的配置位
+			
+			if(mode==GPIO_MODE_INPUT_UP)
+			{
+				*(uint32_t *)((unsigned int)this->GPIOn+((i>7)?4:0)) |=  (0X0000000F&0X8)<<(4*((i<8)?i:i-8));
+				this->GPIOn->ODR |= 1<<i;
+			}
+			else if(mode==GPIO_MODE_INPUT_DOWN)
+			{
+				*(uint32_t *)((unsigned int)this->GPIOn+((i>7)?4:0)) |=  (0X0000000F&0X8)<<(4*((i<8)?i:i-8));
+				this->GPIOn->ODR &= ~(1<<i);
+			}
+			else *(uint32_t *)((unsigned int)this->GPIOn+((i>7)?4:0)) |=  (0X0000000F&mode)<<(4*((i<8)?i:i-8));
+		}
+		Pins>>=1;
+		
+	}	
+}
