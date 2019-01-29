@@ -19,9 +19,9 @@ int main()
     
 }
 ```
-### API参考
+## API参考
 
-#### 指定初始化的引脚
+### 指定初始化的引脚
 ```css
 GPIO_PIN_0  
 GPIO_PIN_1  
@@ -45,7 +45,7 @@ GPIO_PIN_All
 
 可以使用 GPIO_PIN_11 | GPIO_PIN_15 的方式同时初始化多个引脚
 
-#### GPIO模式有
+### GPIO模式有
 
 
 ```CSS
@@ -56,7 +56,7 @@ GPIO_MODE_INPUT_DOWN		0X8     //下拉输入
 GPIO_MODE_INPUT_ANALOG      0X0	    //模拟输入
 
 ```
-#### GPIO初始化
+### GPIO初始化
 方式1： 实例化GPIO并初始化GPIO
 ```c++
 GPIO LED1(GPIOC,GPIO_PIN_13,GPIO_MODE_OUTPUT_PP);
@@ -74,7 +74,17 @@ GPIO::Init(GPIOC,&init);
 ```
 
 
-#### 设置引脚状态
+### 设置引脚状态
+
+#### 直接赋值
+```c++
+GPIO LED1(GPIOC,GPIO_PIN_13,GPIO_MODE_OUTPUT_PP);
+LED1 = 0;
+
+```
+
+#### 调用函数
+
 void GPIO::set(int state)
 
 
@@ -102,7 +112,16 @@ GPIO::set(GPIOB,GPIO_PIN_2|GPIO_PIN_7,0);  // 设置GPIOB2和GPIOB7为0
 GPIO::set(GPIOE,GPIO_PIN_All,1); //设置GPIOE所有的引脚为1
 ```
 
-#### 读取引脚状态
+### 读取引脚状态
+
+#### 直接获取
+```c++
+GPIO KEY1(GPIOC,GPIO_PIN_13,GPIO_MODE_INPUT_UP);
+uint16_t key = KEY1;
+
+```
+
+#### 调用函数
 uint16_t GPIO::read()
 
 
