@@ -7,3 +7,4 @@
 .\objects\main.o: ..\Lib\inc\sys.h
 .\objects\main.o: ..\Lib\inc\usart.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: ..\Lib\inc\iic.h

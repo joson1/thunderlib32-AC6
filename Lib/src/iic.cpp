@@ -98,6 +98,7 @@ void IIC::write(uint8_t val)
 	}    
 
 }
+/*ack:是否回应ack    0：不回应  1：回应*/
 uint8_t IIC::read(uint8_t ack)
 {
 	uint8_t mx,dat;

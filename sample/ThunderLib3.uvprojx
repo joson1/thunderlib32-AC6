@@ -394,6 +394,11 @@
               <FileType>8</FileType>
               <FilePath>..\Lib\src\usart.cpp</FilePath>
             </File>
+            <File>
+              <FileName>iic.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Lib\src\iic.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
