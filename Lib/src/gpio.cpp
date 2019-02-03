@@ -226,3 +226,12 @@ uint16_t GPIO::operator=(const GPIO &P)
 	return this->read(this->GPIOn,this->Pin);
 
 }
+
+void GPIO::toggle(GPIO_TypeDef* GPIOn,uint16_t Pin)
+{
+	uint32_t tmp = GPIOn->ODR&Pin;
+	tmp = ~tmp;
+	tmp = tmp&Pin;
+	GPIOn->ODR &= (~Pin);
+	GPIOn->ODR |= tmp;	
+}
