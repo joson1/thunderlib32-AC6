@@ -80,23 +80,23 @@ ARM Macro Assembler    Page 2
    45 00000400         
    46 00000400         ;Œ¥”√µΩ±‡“Î∆˜◊‘¥¯µƒƒ⁄¥Êπ‹¿Ì(malloc,freeµ»)£¨…Ë÷√Heap_Szi
                        eŒ™0
-   47 00000400 00000000 
+   47 00000400 00000400 
                        Heap_Size
-                               EQU              0x00000000
+                               EQU              0x00000400
    48 00000400         
    49 00000400                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
 3
    50 00000000         __heap_base
    51 00000000         Heap_Mem
                                SPACE            Heap_Size
-   52 00000000         __heap_limit
-   53 00000000         
-   54 00000000                 PRESERVE8
-   55 00000000                 THUMB
-   56 00000000         
-   57 00000000         
-   58 00000000         ; Vector Table Mapped to Address 0 at Reset
-   59 00000000                 AREA             RESET, DATA, READONLY
+   52 00000400         __heap_limit
+   53 00000400         
+   54 00000400                 PRESERVE8
+   55 00000400                 THUMB
+   56 00000400         
+   57 00000400         
+   58 00000400         ; Vector Table Mapped to Address 0 at Reset
+   59 00000400                 AREA             RESET, DATA, READONLY
    60 00000000                 EXPORT           __Vectors
    61 00000000                 EXPORT           __Vectors_End
    62 00000000                 EXPORT           __Vectors_Size
@@ -257,71 +257,71 @@ ARM Macro Assembler    Page 4
                        ‘œ¬¥˙¬ÎŒ™∑¿÷π±®¥Ì£°
   153 00000000         ;ø‚∫Ø ˝∞Ê±æ¥˙¬Î£¨Ω®“Èº”…œ’‚¿Ô£®Õ‚≤ø±ÿ–Î µœ÷SystemInit∫Ø 
                        ˝£©£¨“‘≥ı ºªØstm32 ±÷”µ»°£
-  154 00000000         ;IMPORT  SystemInit   
+  154 00000000                 IMPORT           SystemInit
 
 
 
 ARM Macro Assembler    Page 5 
 
 
-  155 00000000         ;LDR     R0, =SystemInit 
-  156 00000000         ;BLX     R0                  
-  157 00000000 4808            LDR              R0, =__main
-  158 00000002 4700            BX               R0
-  159 00000004                 ENDP
-  160 00000004         
-  161 00000004         ; Dummy Exception Handlers (infinite loops which can be 
+  155 00000000 4809            LDR              R0, =SystemInit
+  156 00000002 4780            BLX              R0
+  157 00000004 4809            LDR              R0, =__main
+  158 00000006 4700            BX               R0
+  159 00000008                 ENDP
+  160 00000008         
+  161 00000008         ; Dummy Exception Handlers (infinite loops which can be 
                        modified)
-  162 00000004         
-  163 00000004         NMI_Handler
+  162 00000008         
+  163 00000008         NMI_Handler
                                PROC
-  164 00000004                 EXPORT           NMI_Handler                [WEA
+  164 00000008                 EXPORT           NMI_Handler                [WEA
 K]
-  165 00000004 E7FE            B                .
-  166 00000006                 ENDP
-  168 00000006         HardFault_Handler
+  165 00000008 E7FE            B                .
+  166 0000000A                 ENDP
+  168 0000000A         HardFault_Handler
                                PROC
-  169 00000006                 EXPORT           HardFault_Handler          [WEA
+  169 0000000A                 EXPORT           HardFault_Handler          [WEA
 K]
-  170 00000006 E7FE            B                .
-  171 00000008                 ENDP
-  173 00000008         MemManage_Handler
+  170 0000000A E7FE            B                .
+  171 0000000C                 ENDP
+  173 0000000C         MemManage_Handler
                                PROC
-  174 00000008                 EXPORT           MemManage_Handler          [WEA
+  174 0000000C                 EXPORT           MemManage_Handler          [WEA
 K]
-  175 00000008 E7FE            B                .
-  176 0000000A                 ENDP
-  178 0000000A         BusFault_Handler
+  175 0000000C E7FE            B                .
+  176 0000000E                 ENDP
+  178 0000000E         BusFault_Handler
                                PROC
-  179 0000000A                 EXPORT           BusFault_Handler           [WEA
+  179 0000000E                 EXPORT           BusFault_Handler           [WEA
 K]
-  180 0000000A E7FE            B                .
-  181 0000000C                 ENDP
-  183 0000000C         UsageFault_Handler
+  180 0000000E E7FE            B                .
+  181 00000010                 ENDP
+  183 00000010         UsageFault_Handler
                                PROC
-  184 0000000C                 EXPORT           UsageFault_Handler         [WEA
+  184 00000010                 EXPORT           UsageFault_Handler         [WEA
 K]
-  185 0000000C E7FE            B                .
-  186 0000000E                 ENDP
-  187 0000000E         SVC_Handler
+  185 00000010 E7FE            B                .
+  186 00000012                 ENDP
+  187 00000012         SVC_Handler
                                PROC
-  188 0000000E                 EXPORT           SVC_Handler                [WEA
+  188 00000012                 EXPORT           SVC_Handler                [WEA
 K]
-  189 0000000E E7FE            B                .
-  190 00000010                 ENDP
-  192 00000010         DebugMon_Handler
+  189 00000012 E7FE            B                .
+  190 00000014                 ENDP
+  192 00000014         DebugMon_Handler
                                PROC
-  193 00000010                 EXPORT           DebugMon_Handler           [WEA
+  193 00000014                 EXPORT           DebugMon_Handler           [WEA
 K]
-  194 00000010 E7FE            B                .
-  195 00000012                 ENDP
-  196 00000012         PendSV_Handler
+  194 00000014 E7FE            B                .
+  195 00000016                 ENDP
+  196 00000016         PendSV_Handler
                                PROC
-  197 00000012                 EXPORT           PendSV_Handler             [WEA
+  197 00000016                 EXPORT           PendSV_Handler             [WEA
 K]
-  198 00000012 E7FE            B                .
-  199 00000014                 ENDP
-  200 00000014         SysTick_Handler
+  198 00000016 E7FE            B                .
+  199 00000018                 ENDP
+  200 00000018         SysTick_Handler
                                PROC
 
 
@@ -329,65 +329,65 @@ K]
 ARM Macro Assembler    Page 6 
 
 
-  201 00000014                 EXPORT           SysTick_Handler            [WEA
+  201 00000018                 EXPORT           SysTick_Handler            [WEA
 K]
-  202 00000014 E7FE            B                .
-  203 00000016                 ENDP
-  204 00000016         
-  205 00000016         Default_Handler
+  202 00000018 E7FE            B                .
+  203 0000001A                 ENDP
+  204 0000001A         
+  205 0000001A         Default_Handler
                                PROC
-  206 00000016         
-  207 00000016                 EXPORT           WWDG_IRQHandler            [WEA
+  206 0000001A         
+  207 0000001A                 EXPORT           WWDG_IRQHandler            [WEA
 K]
-  208 00000016                 EXPORT           PVD_IRQHandler             [WEA
+  208 0000001A                 EXPORT           PVD_IRQHandler             [WEA
 K]
-  209 00000016                 EXPORT           TAMPER_IRQHandler          [WEA
+  209 0000001A                 EXPORT           TAMPER_IRQHandler          [WEA
 K]
-  210 00000016                 EXPORT           RTC_IRQHandler             [WEA
+  210 0000001A                 EXPORT           RTC_IRQHandler             [WEA
 K]
-  211 00000016                 EXPORT           FLASH_IRQHandler           [WEA
+  211 0000001A                 EXPORT           FLASH_IRQHandler           [WEA
 K]
-  212 00000016                 EXPORT           RCC_IRQHandler             [WEA
+  212 0000001A                 EXPORT           RCC_IRQHandler             [WEA
 K]
-  213 00000016                 EXPORT           EXTI0_IRQHandler           [WEA
+  213 0000001A                 EXPORT           EXTI0_IRQHandler           [WEA
 K]
-  214 00000016                 EXPORT           EXTI1_IRQHandler           [WEA
+  214 0000001A                 EXPORT           EXTI1_IRQHandler           [WEA
 K]
-  215 00000016                 EXPORT           EXTI2_IRQHandler           [WEA
+  215 0000001A                 EXPORT           EXTI2_IRQHandler           [WEA
 K]
-  216 00000016                 EXPORT           EXTI3_IRQHandler           [WEA
+  216 0000001A                 EXPORT           EXTI3_IRQHandler           [WEA
 K]
-  217 00000016                 EXPORT           EXTI4_IRQHandler           [WEA
+  217 0000001A                 EXPORT           EXTI4_IRQHandler           [WEA
 K]
-  218 00000016                 EXPORT           DMA1_Channel1_IRQHandler   [WEA
+  218 0000001A                 EXPORT           DMA1_Channel1_IRQHandler   [WEA
 K]
-  219 00000016                 EXPORT           DMA1_Channel2_IRQHandler   [WEA
+  219 0000001A                 EXPORT           DMA1_Channel2_IRQHandler   [WEA
 K]
-  220 00000016                 EXPORT           DMA1_Channel3_IRQHandler   [WEA
+  220 0000001A                 EXPORT           DMA1_Channel3_IRQHandler   [WEA
 K]
-  221 00000016                 EXPORT           DMA1_Channel4_IRQHandler   [WEA
+  221 0000001A                 EXPORT           DMA1_Channel4_IRQHandler   [WEA
 K]
-  222 00000016                 EXPORT           DMA1_Channel5_IRQHandler   [WEA
+  222 0000001A                 EXPORT           DMA1_Channel5_IRQHandler   [WEA
 K]
-  223 00000016                 EXPORT           DMA1_Channel6_IRQHandler   [WEA
+  223 0000001A                 EXPORT           DMA1_Channel6_IRQHandler   [WEA
 K]
-  224 00000016                 EXPORT           DMA1_Channel7_IRQHandler   [WEA
+  224 0000001A                 EXPORT           DMA1_Channel7_IRQHandler   [WEA
 K]
-  225 00000016                 EXPORT           ADC1_2_IRQHandler          [WEA
+  225 0000001A                 EXPORT           ADC1_2_IRQHandler          [WEA
 K]
-  226 00000016                 EXPORT           USB_HP_CAN1_TX_IRQHandler  [WEA
+  226 0000001A                 EXPORT           USB_HP_CAN1_TX_IRQHandler  [WEA
 K]
-  227 00000016                 EXPORT           USB_LP_CAN1_RX0_IRQHandler [WEA
+  227 0000001A                 EXPORT           USB_LP_CAN1_RX0_IRQHandler [WEA
 K]
-  228 00000016                 EXPORT           CAN1_RX1_IRQHandler        [WEA
+  228 0000001A                 EXPORT           CAN1_RX1_IRQHandler        [WEA
 K]
-  229 00000016                 EXPORT           CAN1_SCE_IRQHandler        [WEA
+  229 0000001A                 EXPORT           CAN1_SCE_IRQHandler        [WEA
 K]
-  230 00000016                 EXPORT           EXTI9_5_IRQHandler         [WEA
+  230 0000001A                 EXPORT           EXTI9_5_IRQHandler         [WEA
 K]
-  231 00000016                 EXPORT           TIM1_BRK_IRQHandler        [WEA
+  231 0000001A                 EXPORT           TIM1_BRK_IRQHandler        [WEA
 K]
-  232 00000016                 EXPORT           TIM1_UP_IRQHandler         [WEA
+  232 0000001A                 EXPORT           TIM1_UP_IRQHandler         [WEA
 
 
 
@@ -395,63 +395,63 @@ ARM Macro Assembler    Page 7
 
 
 K]
-  233 00000016                 EXPORT           TIM1_TRG_COM_IRQHandler    [WEA
+  233 0000001A                 EXPORT           TIM1_TRG_COM_IRQHandler    [WEA
 K]
-  234 00000016                 EXPORT           TIM1_CC_IRQHandler         [WEA
+  234 0000001A                 EXPORT           TIM1_CC_IRQHandler         [WEA
 K]
-  235 00000016                 EXPORT           TIM2_IRQHandler            [WEA
+  235 0000001A                 EXPORT           TIM2_IRQHandler            [WEA
 K]
-  236 00000016                 EXPORT           TIM3_IRQHandler            [WEA
+  236 0000001A                 EXPORT           TIM3_IRQHandler            [WEA
 K]
-  237 00000016                 EXPORT           TIM4_IRQHandler            [WEA
+  237 0000001A                 EXPORT           TIM4_IRQHandler            [WEA
 K]
-  238 00000016                 EXPORT           I2C1_EV_IRQHandler         [WEA
+  238 0000001A                 EXPORT           I2C1_EV_IRQHandler         [WEA
 K]
-  239 00000016                 EXPORT           I2C1_ER_IRQHandler         [WEA
+  239 0000001A                 EXPORT           I2C1_ER_IRQHandler         [WEA
 K]
-  240 00000016                 EXPORT           I2C2_EV_IRQHandler         [WEA
+  240 0000001A                 EXPORT           I2C2_EV_IRQHandler         [WEA
 K]
-  241 00000016                 EXPORT           I2C2_ER_IRQHandler         [WEA
+  241 0000001A                 EXPORT           I2C2_ER_IRQHandler         [WEA
 K]
-  242 00000016                 EXPORT           SPI1_IRQHandler            [WEA
+  242 0000001A                 EXPORT           SPI1_IRQHandler            [WEA
 K]
-  243 00000016                 EXPORT           SPI2_IRQHandler            [WEA
+  243 0000001A                 EXPORT           SPI2_IRQHandler            [WEA
 K]
-  244 00000016                 EXPORT           USART1_IRQHandler          [WEA
+  244 0000001A                 EXPORT           USART1_IRQHandler          [WEA
 K]
-  245 00000016                 EXPORT           USART2_IRQHandler          [WEA
+  245 0000001A                 EXPORT           USART2_IRQHandler          [WEA
 K]
-  246 00000016                 EXPORT           USART3_IRQHandler          [WEA
+  246 0000001A                 EXPORT           USART3_IRQHandler          [WEA
 K]
-  247 00000016                 EXPORT           EXTI15_10_IRQHandler       [WEA
+  247 0000001A                 EXPORT           EXTI15_10_IRQHandler       [WEA
 K]
-  248 00000016                 EXPORT           RTCAlarm_IRQHandler        [WEA
+  248 0000001A                 EXPORT           RTCAlarm_IRQHandler        [WEA
 K]
-  249 00000016                 EXPORT           USBWakeUp_IRQHandler       [WEA
+  249 0000001A                 EXPORT           USBWakeUp_IRQHandler       [WEA
 K]
-  250 00000016                 EXPORT           TIM8_BRK_IRQHandler        [WEA
+  250 0000001A                 EXPORT           TIM8_BRK_IRQHandler        [WEA
 K]
-  251 00000016                 EXPORT           TIM8_UP_IRQHandler         [WEA
+  251 0000001A                 EXPORT           TIM8_UP_IRQHandler         [WEA
 K]
-  252 00000016                 EXPORT           TIM8_TRG_COM_IRQHandler    [WEA
+  252 0000001A                 EXPORT           TIM8_TRG_COM_IRQHandler    [WEA
 K]
-  253 00000016                 EXPORT           TIM8_CC_IRQHandler         [WEA
+  253 0000001A                 EXPORT           TIM8_CC_IRQHandler         [WEA
 K]
-  254 00000016                 EXPORT           ADC3_IRQHandler            [WEA
+  254 0000001A                 EXPORT           ADC3_IRQHandler            [WEA
 K]
-  255 00000016                 EXPORT           FSMC_IRQHandler            [WEA
+  255 0000001A                 EXPORT           FSMC_IRQHandler            [WEA
 K]
-  256 00000016                 EXPORT           SDIO_IRQHandler            [WEA
+  256 0000001A                 EXPORT           SDIO_IRQHandler            [WEA
 K]
-  257 00000016                 EXPORT           TIM5_IRQHandler            [WEA
+  257 0000001A                 EXPORT           TIM5_IRQHandler            [WEA
 K]
-  258 00000016                 EXPORT           SPI3_IRQHandler            [WEA
+  258 0000001A                 EXPORT           SPI3_IRQHandler            [WEA
 K]
-  259 00000016                 EXPORT           UART4_IRQHandler           [WEA
+  259 0000001A                 EXPORT           UART4_IRQHandler           [WEA
 K]
-  260 00000016                 EXPORT           UART5_IRQHandler           [WEA
+  260 0000001A                 EXPORT           UART5_IRQHandler           [WEA
 K]
-  261 00000016                 EXPORT           TIM6_IRQHandler            [WEA
+  261 0000001A                 EXPORT           TIM6_IRQHandler            [WEA
 K]
 
 
@@ -459,114 +459,116 @@ K]
 ARM Macro Assembler    Page 8 
 
 
-  262 00000016                 EXPORT           TIM7_IRQHandler            [WEA
+  262 0000001A                 EXPORT           TIM7_IRQHandler            [WEA
 K]
-  263 00000016                 EXPORT           DMA2_Channel1_IRQHandler   [WEA
+  263 0000001A                 EXPORT           DMA2_Channel1_IRQHandler   [WEA
 K]
-  264 00000016                 EXPORT           DMA2_Channel2_IRQHandler   [WEA
+  264 0000001A                 EXPORT           DMA2_Channel2_IRQHandler   [WEA
 K]
-  265 00000016                 EXPORT           DMA2_Channel3_IRQHandler   [WEA
+  265 0000001A                 EXPORT           DMA2_Channel3_IRQHandler   [WEA
 K]
-  266 00000016                 EXPORT           DMA2_Channel4_5_IRQHandler [WEA
+  266 0000001A                 EXPORT           DMA2_Channel4_5_IRQHandler [WEA
 K]
-  267 00000016         
-  268 00000016         WWDG_IRQHandler
-  269 00000016         PVD_IRQHandler
-  270 00000016         TAMPER_IRQHandler
-  271 00000016         RTC_IRQHandler
-  272 00000016         FLASH_IRQHandler
-  273 00000016         RCC_IRQHandler
-  274 00000016         EXTI0_IRQHandler
-  275 00000016         EXTI1_IRQHandler
-  276 00000016         EXTI2_IRQHandler
-  277 00000016         EXTI3_IRQHandler
-  278 00000016         EXTI4_IRQHandler
-  279 00000016         DMA1_Channel1_IRQHandler
-  280 00000016         DMA1_Channel2_IRQHandler
-  281 00000016         DMA1_Channel3_IRQHandler
-  282 00000016         DMA1_Channel4_IRQHandler
-  283 00000016         DMA1_Channel5_IRQHandler
-  284 00000016         DMA1_Channel6_IRQHandler
-  285 00000016         DMA1_Channel7_IRQHandler
-  286 00000016         ADC1_2_IRQHandler
-  287 00000016         USB_HP_CAN1_TX_IRQHandler
-  288 00000016         USB_LP_CAN1_RX0_IRQHandler
-  289 00000016         CAN1_RX1_IRQHandler
-  290 00000016         CAN1_SCE_IRQHandler
-  291 00000016         EXTI9_5_IRQHandler
-  292 00000016         TIM1_BRK_IRQHandler
-  293 00000016         TIM1_UP_IRQHandler
-  294 00000016         TIM1_TRG_COM_IRQHandler
-  295 00000016         TIM1_CC_IRQHandler
-  296 00000016         TIM2_IRQHandler
-  297 00000016         TIM3_IRQHandler
-  298 00000016         TIM4_IRQHandler
-  299 00000016         I2C1_EV_IRQHandler
-  300 00000016         I2C1_ER_IRQHandler
-  301 00000016         I2C2_EV_IRQHandler
-  302 00000016         I2C2_ER_IRQHandler
-  303 00000016         SPI1_IRQHandler
-  304 00000016         SPI2_IRQHandler
-  305 00000016         USART1_IRQHandler
-  306 00000016         USART2_IRQHandler
-  307 00000016         USART3_IRQHandler
-  308 00000016         EXTI15_10_IRQHandler
-  309 00000016         RTCAlarm_IRQHandler
-  310 00000016         USBWakeUp_IRQHandler
-  311 00000016         TIM8_BRK_IRQHandler
-  312 00000016         TIM8_UP_IRQHandler
-  313 00000016         TIM8_TRG_COM_IRQHandler
-  314 00000016         TIM8_CC_IRQHandler
-  315 00000016         ADC3_IRQHandler
+  267 0000001A         
+  268 0000001A         WWDG_IRQHandler
+  269 0000001A         PVD_IRQHandler
+  270 0000001A         TAMPER_IRQHandler
+  271 0000001A         RTC_IRQHandler
+  272 0000001A         FLASH_IRQHandler
+  273 0000001A         RCC_IRQHandler
+  274 0000001A         EXTI0_IRQHandler
+  275 0000001A         EXTI1_IRQHandler
+  276 0000001A         EXTI2_IRQHandler
+  277 0000001A         EXTI3_IRQHandler
+  278 0000001A         EXTI4_IRQHandler
+  279 0000001A         DMA1_Channel1_IRQHandler
+  280 0000001A         DMA1_Channel2_IRQHandler
+  281 0000001A         DMA1_Channel3_IRQHandler
+  282 0000001A         DMA1_Channel4_IRQHandler
+  283 0000001A         DMA1_Channel5_IRQHandler
+  284 0000001A         DMA1_Channel6_IRQHandler
+  285 0000001A         DMA1_Channel7_IRQHandler
+  286 0000001A         ADC1_2_IRQHandler
+  287 0000001A         USB_HP_CAN1_TX_IRQHandler
+  288 0000001A         USB_LP_CAN1_RX0_IRQHandler
+  289 0000001A         CAN1_RX1_IRQHandler
+  290 0000001A         CAN1_SCE_IRQHandler
+  291 0000001A         EXTI9_5_IRQHandler
+  292 0000001A         TIM1_BRK_IRQHandler
+  293 0000001A         TIM1_UP_IRQHandler
+  294 0000001A         TIM1_TRG_COM_IRQHandler
+  295 0000001A         TIM1_CC_IRQHandler
+  296 0000001A         TIM2_IRQHandler
+  297 0000001A         TIM3_IRQHandler
+  298 0000001A         TIM4_IRQHandler
+  299 0000001A         I2C1_EV_IRQHandler
+  300 0000001A         I2C1_ER_IRQHandler
+  301 0000001A         I2C2_EV_IRQHandler
+  302 0000001A         I2C2_ER_IRQHandler
+  303 0000001A         SPI1_IRQHandler
+  304 0000001A         SPI2_IRQHandler
+  305 0000001A         USART1_IRQHandler
+  306 0000001A         USART2_IRQHandler
+  307 0000001A         USART3_IRQHandler
+  308 0000001A         EXTI15_10_IRQHandler
+  309 0000001A         RTCAlarm_IRQHandler
+  310 0000001A         USBWakeUp_IRQHandler
+  311 0000001A         TIM8_BRK_IRQHandler
+  312 0000001A         TIM8_UP_IRQHandler
+  313 0000001A         TIM8_TRG_COM_IRQHandler
+  314 0000001A         TIM8_CC_IRQHandler
+  315 0000001A         ADC3_IRQHandler
 
 
 
 ARM Macro Assembler    Page 9 
 
 
-  316 00000016         FSMC_IRQHandler
-  317 00000016         SDIO_IRQHandler
-  318 00000016         TIM5_IRQHandler
-  319 00000016         SPI3_IRQHandler
-  320 00000016         UART4_IRQHandler
-  321 00000016         UART5_IRQHandler
-  322 00000016         TIM6_IRQHandler
-  323 00000016         TIM7_IRQHandler
-  324 00000016         DMA2_Channel1_IRQHandler
-  325 00000016         DMA2_Channel2_IRQHandler
-  326 00000016         DMA2_Channel3_IRQHandler
-  327 00000016         DMA2_Channel4_5_IRQHandler
-  328 00000016 E7FE            B                .
-  329 00000018         
-  330 00000018                 ENDP
-  331 00000018         
-  332 00000018                 ALIGN
-  333 00000018         
-  334 00000018         ;*******************************************************
+  316 0000001A         FSMC_IRQHandler
+  317 0000001A         SDIO_IRQHandler
+  318 0000001A         TIM5_IRQHandler
+  319 0000001A         SPI3_IRQHandler
+  320 0000001A         UART4_IRQHandler
+  321 0000001A         UART5_IRQHandler
+  322 0000001A         TIM6_IRQHandler
+  323 0000001A         TIM7_IRQHandler
+  324 0000001A         DMA2_Channel1_IRQHandler
+  325 0000001A         DMA2_Channel2_IRQHandler
+  326 0000001A         DMA2_Channel3_IRQHandler
+  327 0000001A         DMA2_Channel4_5_IRQHandler
+  328 0000001A E7FE            B                .
+  329 0000001C         
+  330 0000001C                 ENDP
+  331 0000001C         
+  332 0000001C                 ALIGN
+  333 0000001C         
+  334 0000001C         ;*******************************************************
                        ************************
-  335 00000018         ; User Stack and Heap initialization
-  336 00000018         ;*******************************************************
+  335 0000001C         ; User Stack and Heap initialization
+  336 0000001C         ;*******************************************************
                        ************************
-  337 00000018                 IF               :DEF:__MICROLIB
-  344 00000018         
-  345 00000018                 IMPORT           __use_two_region_memory
-  346 00000018                 EXPORT           __user_initial_stackheap
-  347 00000018         
-  348 00000018         __user_initial_stackheap
-  349 00000018         
-  350 00000018 4803            LDR              R0, =  Heap_Mem
-  351 0000001A 4904            LDR              R1, =(Stack_Mem + Stack_Size)
-  352 0000001C 4A02            LDR              R2, = (Heap_Mem +  Heap_Size)
-  353 0000001E 4B04            LDR              R3, = Stack_Mem
-  354 00000020 4770            BX               LR
-  355 00000022         
-  356 00000022 00 00           ALIGN
-  357 00000024         
-  358 00000024                 ENDIF
-  359 00000024         
-  360 00000024                 END
+  337 0000001C                 IF               :DEF:__MICROLIB
+  344 0000001C         
+  345 0000001C                 IMPORT           __use_two_region_memory
+  346 0000001C                 EXPORT           __user_initial_stackheap
+  347 0000001C         
+  348 0000001C         __user_initial_stackheap
+  349 0000001C         
+  350 0000001C 4804            LDR              R0, =  Heap_Mem
+  351 0000001E 4905            LDR              R1, =(Stack_Mem + Stack_Size)
+  352 00000020 4A05            LDR              R2, = (Heap_Mem +  Heap_Size)
+  353 00000022 4B06            LDR              R3, = Stack_Mem
+  354 00000024 4770            BX               LR
+  355 00000026         
+  356 00000026 00 00           ALIGN
+  357 00000028         
+  358 00000028                 ENDIF
+  359 00000028         
+  360 00000028                 END
               00000000 
               00000000 
+              00000000 
+              00000400 
               00000400 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
@@ -638,7 +640,7 @@ Symbol: __heap_base
    Uses
       None
 Comment: __heap_base unused
-__heap_limit 00000000
+__heap_limit 00000400
 
 Symbol: __heap_limit
    Definitions
@@ -694,7 +696,7 @@ Symbol: .text
    Uses
       None
 Comment: .text unused
-ADC1_2_IRQHandler 00000016
+ADC1_2_IRQHandler 0000001A
 
 Symbol: ADC1_2_IRQHandler
    Definitions
@@ -703,7 +705,7 @@ Symbol: ADC1_2_IRQHandler
       At line 100 in file startup_stm32f10x_hd.s
       At line 225 in file startup_stm32f10x_hd.s
 
-ADC3_IRQHandler 00000016
+ADC3_IRQHandler 0000001A
 
 Symbol: ADC3_IRQHandler
    Definitions
@@ -712,7 +714,7 @@ Symbol: ADC3_IRQHandler
       At line 129 in file startup_stm32f10x_hd.s
       At line 254 in file startup_stm32f10x_hd.s
 
-BusFault_Handler 0000000A
+BusFault_Handler 0000000E
 
 Symbol: BusFault_Handler
    Definitions
@@ -721,7 +723,7 @@ Symbol: BusFault_Handler
       At line 69 in file startup_stm32f10x_hd.s
       At line 179 in file startup_stm32f10x_hd.s
 
-CAN1_RX1_IRQHandler 00000016
+CAN1_RX1_IRQHandler 0000001A
 
 Symbol: CAN1_RX1_IRQHandler
    Definitions
@@ -730,7 +732,7 @@ Symbol: CAN1_RX1_IRQHandler
       At line 103 in file startup_stm32f10x_hd.s
       At line 228 in file startup_stm32f10x_hd.s
 
-CAN1_SCE_IRQHandler 00000016
+CAN1_SCE_IRQHandler 0000001A
 
 Symbol: CAN1_SCE_IRQHandler
    Definitions
@@ -739,7 +741,7 @@ Symbol: CAN1_SCE_IRQHandler
       At line 104 in file startup_stm32f10x_hd.s
       At line 229 in file startup_stm32f10x_hd.s
 
-DMA1_Channel1_IRQHandler 00000016
+DMA1_Channel1_IRQHandler 0000001A
 
 Symbol: DMA1_Channel1_IRQHandler
    Definitions
@@ -754,7 +756,7 @@ Relocatable symbols
       At line 93 in file startup_stm32f10x_hd.s
       At line 218 in file startup_stm32f10x_hd.s
 
-DMA1_Channel2_IRQHandler 00000016
+DMA1_Channel2_IRQHandler 0000001A
 
 Symbol: DMA1_Channel2_IRQHandler
    Definitions
@@ -763,7 +765,7 @@ Symbol: DMA1_Channel2_IRQHandler
       At line 94 in file startup_stm32f10x_hd.s
       At line 219 in file startup_stm32f10x_hd.s
 
-DMA1_Channel3_IRQHandler 00000016
+DMA1_Channel3_IRQHandler 0000001A
 
 Symbol: DMA1_Channel3_IRQHandler
    Definitions
@@ -772,7 +774,7 @@ Symbol: DMA1_Channel3_IRQHandler
       At line 95 in file startup_stm32f10x_hd.s
       At line 220 in file startup_stm32f10x_hd.s
 
-DMA1_Channel4_IRQHandler 00000016
+DMA1_Channel4_IRQHandler 0000001A
 
 Symbol: DMA1_Channel4_IRQHandler
    Definitions
@@ -781,7 +783,7 @@ Symbol: DMA1_Channel4_IRQHandler
       At line 96 in file startup_stm32f10x_hd.s
       At line 221 in file startup_stm32f10x_hd.s
 
-DMA1_Channel5_IRQHandler 00000016
+DMA1_Channel5_IRQHandler 0000001A
 
 Symbol: DMA1_Channel5_IRQHandler
    Definitions
@@ -790,7 +792,7 @@ Symbol: DMA1_Channel5_IRQHandler
       At line 97 in file startup_stm32f10x_hd.s
       At line 222 in file startup_stm32f10x_hd.s
 
-DMA1_Channel6_IRQHandler 00000016
+DMA1_Channel6_IRQHandler 0000001A
 
 Symbol: DMA1_Channel6_IRQHandler
    Definitions
@@ -799,7 +801,7 @@ Symbol: DMA1_Channel6_IRQHandler
       At line 98 in file startup_stm32f10x_hd.s
       At line 223 in file startup_stm32f10x_hd.s
 
-DMA1_Channel7_IRQHandler 00000016
+DMA1_Channel7_IRQHandler 0000001A
 
 Symbol: DMA1_Channel7_IRQHandler
    Definitions
@@ -808,7 +810,7 @@ Symbol: DMA1_Channel7_IRQHandler
       At line 99 in file startup_stm32f10x_hd.s
       At line 224 in file startup_stm32f10x_hd.s
 
-DMA2_Channel1_IRQHandler 00000016
+DMA2_Channel1_IRQHandler 0000001A
 
 
 
@@ -823,7 +825,7 @@ Symbol: DMA2_Channel1_IRQHandler
       At line 138 in file startup_stm32f10x_hd.s
       At line 263 in file startup_stm32f10x_hd.s
 
-DMA2_Channel2_IRQHandler 00000016
+DMA2_Channel2_IRQHandler 0000001A
 
 Symbol: DMA2_Channel2_IRQHandler
    Definitions
@@ -832,7 +834,7 @@ Symbol: DMA2_Channel2_IRQHandler
       At line 139 in file startup_stm32f10x_hd.s
       At line 264 in file startup_stm32f10x_hd.s
 
-DMA2_Channel3_IRQHandler 00000016
+DMA2_Channel3_IRQHandler 0000001A
 
 Symbol: DMA2_Channel3_IRQHandler
    Definitions
@@ -841,7 +843,7 @@ Symbol: DMA2_Channel3_IRQHandler
       At line 140 in file startup_stm32f10x_hd.s
       At line 265 in file startup_stm32f10x_hd.s
 
-DMA2_Channel4_5_IRQHandler 00000016
+DMA2_Channel4_5_IRQHandler 0000001A
 
 Symbol: DMA2_Channel4_5_IRQHandler
    Definitions
@@ -850,7 +852,7 @@ Symbol: DMA2_Channel4_5_IRQHandler
       At line 141 in file startup_stm32f10x_hd.s
       At line 266 in file startup_stm32f10x_hd.s
 
-DebugMon_Handler 00000010
+DebugMon_Handler 00000014
 
 Symbol: DebugMon_Handler
    Definitions
@@ -859,7 +861,7 @@ Symbol: DebugMon_Handler
       At line 76 in file startup_stm32f10x_hd.s
       At line 193 in file startup_stm32f10x_hd.s
 
-Default_Handler 00000016
+Default_Handler 0000001A
 
 Symbol: Default_Handler
    Definitions
@@ -867,7 +869,7 @@ Symbol: Default_Handler
    Uses
       None
 Comment: Default_Handler unused
-EXTI0_IRQHandler 00000016
+EXTI0_IRQHandler 0000001A
 
 Symbol: EXTI0_IRQHandler
    Definitions
@@ -882,7 +884,7 @@ ARM Macro Assembler    Page 4 Alphabetic symbol ordering
 Relocatable symbols
 
 
-EXTI15_10_IRQHandler 00000016
+EXTI15_10_IRQHandler 0000001A
 
 Symbol: EXTI15_10_IRQHandler
    Definitions
@@ -891,7 +893,7 @@ Symbol: EXTI15_10_IRQHandler
       At line 122 in file startup_stm32f10x_hd.s
       At line 247 in file startup_stm32f10x_hd.s
 
-EXTI1_IRQHandler 00000016
+EXTI1_IRQHandler 0000001A
 
 Symbol: EXTI1_IRQHandler
    Definitions
@@ -900,7 +902,7 @@ Symbol: EXTI1_IRQHandler
       At line 89 in file startup_stm32f10x_hd.s
       At line 214 in file startup_stm32f10x_hd.s
 
-EXTI2_IRQHandler 00000016
+EXTI2_IRQHandler 0000001A
 
 Symbol: EXTI2_IRQHandler
    Definitions
@@ -909,7 +911,7 @@ Symbol: EXTI2_IRQHandler
       At line 90 in file startup_stm32f10x_hd.s
       At line 215 in file startup_stm32f10x_hd.s
 
-EXTI3_IRQHandler 00000016
+EXTI3_IRQHandler 0000001A
 
 Symbol: EXTI3_IRQHandler
    Definitions
@@ -918,7 +920,7 @@ Symbol: EXTI3_IRQHandler
       At line 91 in file startup_stm32f10x_hd.s
       At line 216 in file startup_stm32f10x_hd.s
 
-EXTI4_IRQHandler 00000016
+EXTI4_IRQHandler 0000001A
 
 Symbol: EXTI4_IRQHandler
    Definitions
@@ -927,7 +929,7 @@ Symbol: EXTI4_IRQHandler
       At line 92 in file startup_stm32f10x_hd.s
       At line 217 in file startup_stm32f10x_hd.s
 
-EXTI9_5_IRQHandler 00000016
+EXTI9_5_IRQHandler 0000001A
 
 Symbol: EXTI9_5_IRQHandler
    Definitions
@@ -936,7 +938,7 @@ Symbol: EXTI9_5_IRQHandler
       At line 105 in file startup_stm32f10x_hd.s
       At line 230 in file startup_stm32f10x_hd.s
 
-FLASH_IRQHandler 00000016
+FLASH_IRQHandler 0000001A
 
 Symbol: FLASH_IRQHandler
    Definitions
@@ -951,7 +953,7 @@ Relocatable symbols
       At line 86 in file startup_stm32f10x_hd.s
       At line 211 in file startup_stm32f10x_hd.s
 
-FSMC_IRQHandler 00000016
+FSMC_IRQHandler 0000001A
 
 Symbol: FSMC_IRQHandler
    Definitions
@@ -960,7 +962,7 @@ Symbol: FSMC_IRQHandler
       At line 130 in file startup_stm32f10x_hd.s
       At line 255 in file startup_stm32f10x_hd.s
 
-HardFault_Handler 00000006
+HardFault_Handler 0000000A
 
 Symbol: HardFault_Handler
    Definitions
@@ -969,7 +971,7 @@ Symbol: HardFault_Handler
       At line 67 in file startup_stm32f10x_hd.s
       At line 169 in file startup_stm32f10x_hd.s
 
-I2C1_ER_IRQHandler 00000016
+I2C1_ER_IRQHandler 0000001A
 
 Symbol: I2C1_ER_IRQHandler
    Definitions
@@ -978,7 +980,7 @@ Symbol: I2C1_ER_IRQHandler
       At line 114 in file startup_stm32f10x_hd.s
       At line 239 in file startup_stm32f10x_hd.s
 
-I2C1_EV_IRQHandler 00000016
+I2C1_EV_IRQHandler 0000001A
 
 Symbol: I2C1_EV_IRQHandler
    Definitions
@@ -987,7 +989,7 @@ Symbol: I2C1_EV_IRQHandler
       At line 113 in file startup_stm32f10x_hd.s
       At line 238 in file startup_stm32f10x_hd.s
 
-I2C2_ER_IRQHandler 00000016
+I2C2_ER_IRQHandler 0000001A
 
 Symbol: I2C2_ER_IRQHandler
    Definitions
@@ -996,7 +998,7 @@ Symbol: I2C2_ER_IRQHandler
       At line 116 in file startup_stm32f10x_hd.s
       At line 241 in file startup_stm32f10x_hd.s
 
-I2C2_EV_IRQHandler 00000016
+I2C2_EV_IRQHandler 0000001A
 
 Symbol: I2C2_EV_IRQHandler
    Definitions
@@ -1011,7 +1013,7 @@ Symbol: I2C2_EV_IRQHandler
 ARM Macro Assembler    Page 6 Alphabetic symbol ordering
 Relocatable symbols
 
-MemManage_Handler 00000008
+MemManage_Handler 0000000C
 
 Symbol: MemManage_Handler
    Definitions
@@ -1020,7 +1022,7 @@ Symbol: MemManage_Handler
       At line 68 in file startup_stm32f10x_hd.s
       At line 174 in file startup_stm32f10x_hd.s
 
-NMI_Handler 00000004
+NMI_Handler 00000008
 
 Symbol: NMI_Handler
    Definitions
@@ -1029,7 +1031,7 @@ Symbol: NMI_Handler
       At line 66 in file startup_stm32f10x_hd.s
       At line 164 in file startup_stm32f10x_hd.s
 
-PVD_IRQHandler 00000016
+PVD_IRQHandler 0000001A
 
 Symbol: PVD_IRQHandler
    Definitions
@@ -1038,7 +1040,7 @@ Symbol: PVD_IRQHandler
       At line 83 in file startup_stm32f10x_hd.s
       At line 208 in file startup_stm32f10x_hd.s
 
-PendSV_Handler 00000012
+PendSV_Handler 00000016
 
 Symbol: PendSV_Handler
    Definitions
@@ -1047,7 +1049,7 @@ Symbol: PendSV_Handler
       At line 78 in file startup_stm32f10x_hd.s
       At line 197 in file startup_stm32f10x_hd.s
 
-RCC_IRQHandler 00000016
+RCC_IRQHandler 0000001A
 
 Symbol: RCC_IRQHandler
    Definitions
@@ -1056,7 +1058,7 @@ Symbol: RCC_IRQHandler
       At line 87 in file startup_stm32f10x_hd.s
       At line 212 in file startup_stm32f10x_hd.s
 
-RTCAlarm_IRQHandler 00000016
+RTCAlarm_IRQHandler 0000001A
 
 Symbol: RTCAlarm_IRQHandler
    Definitions
@@ -1065,7 +1067,7 @@ Symbol: RTCAlarm_IRQHandler
       At line 123 in file startup_stm32f10x_hd.s
       At line 248 in file startup_stm32f10x_hd.s
 
-RTC_IRQHandler 00000016
+RTC_IRQHandler 0000001A
 
 Symbol: RTC_IRQHandler
    Definitions
@@ -1089,7 +1091,7 @@ Symbol: Reset_Handler
       At line 65 in file startup_stm32f10x_hd.s
       At line 150 in file startup_stm32f10x_hd.s
 
-SDIO_IRQHandler 00000016
+SDIO_IRQHandler 0000001A
 
 Symbol: SDIO_IRQHandler
    Definitions
@@ -1098,7 +1100,7 @@ Symbol: SDIO_IRQHandler
       At line 131 in file startup_stm32f10x_hd.s
       At line 256 in file startup_stm32f10x_hd.s
 
-SPI1_IRQHandler 00000016
+SPI1_IRQHandler 0000001A
 
 Symbol: SPI1_IRQHandler
    Definitions
@@ -1107,7 +1109,7 @@ Symbol: SPI1_IRQHandler
       At line 117 in file startup_stm32f10x_hd.s
       At line 242 in file startup_stm32f10x_hd.s
 
-SPI2_IRQHandler 00000016
+SPI2_IRQHandler 0000001A
 
 Symbol: SPI2_IRQHandler
    Definitions
@@ -1116,7 +1118,7 @@ Symbol: SPI2_IRQHandler
       At line 118 in file startup_stm32f10x_hd.s
       At line 243 in file startup_stm32f10x_hd.s
 
-SPI3_IRQHandler 00000016
+SPI3_IRQHandler 0000001A
 
 Symbol: SPI3_IRQHandler
    Definitions
@@ -1125,7 +1127,7 @@ Symbol: SPI3_IRQHandler
       At line 133 in file startup_stm32f10x_hd.s
       At line 258 in file startup_stm32f10x_hd.s
 
-SVC_Handler 0000000E
+SVC_Handler 00000012
 
 Symbol: SVC_Handler
    Definitions
@@ -1134,7 +1136,7 @@ Symbol: SVC_Handler
       At line 75 in file startup_stm32f10x_hd.s
       At line 188 in file startup_stm32f10x_hd.s
 
-SysTick_Handler 00000014
+SysTick_Handler 00000018
 
 
 
@@ -1149,7 +1151,7 @@ Symbol: SysTick_Handler
       At line 79 in file startup_stm32f10x_hd.s
       At line 201 in file startup_stm32f10x_hd.s
 
-TAMPER_IRQHandler 00000016
+TAMPER_IRQHandler 0000001A
 
 Symbol: TAMPER_IRQHandler
    Definitions
@@ -1158,7 +1160,7 @@ Symbol: TAMPER_IRQHandler
       At line 84 in file startup_stm32f10x_hd.s
       At line 209 in file startup_stm32f10x_hd.s
 
-TIM1_BRK_IRQHandler 00000016
+TIM1_BRK_IRQHandler 0000001A
 
 Symbol: TIM1_BRK_IRQHandler
    Definitions
@@ -1167,7 +1169,7 @@ Symbol: TIM1_BRK_IRQHandler
       At line 106 in file startup_stm32f10x_hd.s
       At line 231 in file startup_stm32f10x_hd.s
 
-TIM1_CC_IRQHandler 00000016
+TIM1_CC_IRQHandler 0000001A
 
 Symbol: TIM1_CC_IRQHandler
    Definitions
@@ -1176,7 +1178,7 @@ Symbol: TIM1_CC_IRQHandler
       At line 109 in file startup_stm32f10x_hd.s
       At line 234 in file startup_stm32f10x_hd.s
 
-TIM1_TRG_COM_IRQHandler 00000016
+TIM1_TRG_COM_IRQHandler 0000001A
 
 Symbol: TIM1_TRG_COM_IRQHandler
    Definitions
@@ -1185,7 +1187,7 @@ Symbol: TIM1_TRG_COM_IRQHandler
       At line 108 in file startup_stm32f10x_hd.s
       At line 233 in file startup_stm32f10x_hd.s
 
-TIM1_UP_IRQHandler 00000016
+TIM1_UP_IRQHandler 0000001A
 
 Symbol: TIM1_UP_IRQHandler
    Definitions
@@ -1194,7 +1196,7 @@ Symbol: TIM1_UP_IRQHandler
       At line 107 in file startup_stm32f10x_hd.s
       At line 232 in file startup_stm32f10x_hd.s
 
-TIM2_IRQHandler 00000016
+TIM2_IRQHandler 0000001A
 
 Symbol: TIM2_IRQHandler
    Definitions
@@ -1209,7 +1211,7 @@ Relocatable symbols
       At line 110 in file startup_stm32f10x_hd.s
       At line 235 in file startup_stm32f10x_hd.s
 
-TIM3_IRQHandler 00000016
+TIM3_IRQHandler 0000001A
 
 Symbol: TIM3_IRQHandler
    Definitions
@@ -1218,7 +1220,7 @@ Symbol: TIM3_IRQHandler
       At line 111 in file startup_stm32f10x_hd.s
       At line 236 in file startup_stm32f10x_hd.s
 
-TIM4_IRQHandler 00000016
+TIM4_IRQHandler 0000001A
 
 Symbol: TIM4_IRQHandler
    Definitions
@@ -1227,7 +1229,7 @@ Symbol: TIM4_IRQHandler
       At line 112 in file startup_stm32f10x_hd.s
       At line 237 in file startup_stm32f10x_hd.s
 
-TIM5_IRQHandler 00000016
+TIM5_IRQHandler 0000001A
 
 Symbol: TIM5_IRQHandler
    Definitions
@@ -1236,7 +1238,7 @@ Symbol: TIM5_IRQHandler
       At line 132 in file startup_stm32f10x_hd.s
       At line 257 in file startup_stm32f10x_hd.s
 
-TIM6_IRQHandler 00000016
+TIM6_IRQHandler 0000001A
 
 Symbol: TIM6_IRQHandler
    Definitions
@@ -1245,7 +1247,7 @@ Symbol: TIM6_IRQHandler
       At line 136 in file startup_stm32f10x_hd.s
       At line 261 in file startup_stm32f10x_hd.s
 
-TIM7_IRQHandler 00000016
+TIM7_IRQHandler 0000001A
 
 Symbol: TIM7_IRQHandler
    Definitions
@@ -1254,7 +1256,7 @@ Symbol: TIM7_IRQHandler
       At line 137 in file startup_stm32f10x_hd.s
       At line 262 in file startup_stm32f10x_hd.s
 
-TIM8_BRK_IRQHandler 00000016
+TIM8_BRK_IRQHandler 0000001A
 
 Symbol: TIM8_BRK_IRQHandler
    Definitions
@@ -1263,7 +1265,7 @@ Symbol: TIM8_BRK_IRQHandler
       At line 125 in file startup_stm32f10x_hd.s
       At line 250 in file startup_stm32f10x_hd.s
 
-TIM8_CC_IRQHandler 00000016
+TIM8_CC_IRQHandler 0000001A
 
 
 
@@ -1278,7 +1280,7 @@ Symbol: TIM8_CC_IRQHandler
       At line 128 in file startup_stm32f10x_hd.s
       At line 253 in file startup_stm32f10x_hd.s
 
-TIM8_TRG_COM_IRQHandler 00000016
+TIM8_TRG_COM_IRQHandler 0000001A
 
 Symbol: TIM8_TRG_COM_IRQHandler
    Definitions
@@ -1287,7 +1289,7 @@ Symbol: TIM8_TRG_COM_IRQHandler
       At line 127 in file startup_stm32f10x_hd.s
       At line 252 in file startup_stm32f10x_hd.s
 
-TIM8_UP_IRQHandler 00000016
+TIM8_UP_IRQHandler 0000001A
 
 Symbol: TIM8_UP_IRQHandler
    Definitions
@@ -1296,7 +1298,7 @@ Symbol: TIM8_UP_IRQHandler
       At line 126 in file startup_stm32f10x_hd.s
       At line 251 in file startup_stm32f10x_hd.s
 
-UART4_IRQHandler 00000016
+UART4_IRQHandler 0000001A
 
 Symbol: UART4_IRQHandler
    Definitions
@@ -1305,7 +1307,7 @@ Symbol: UART4_IRQHandler
       At line 134 in file startup_stm32f10x_hd.s
       At line 259 in file startup_stm32f10x_hd.s
 
-UART5_IRQHandler 00000016
+UART5_IRQHandler 0000001A
 
 Symbol: UART5_IRQHandler
    Definitions
@@ -1314,7 +1316,7 @@ Symbol: UART5_IRQHandler
       At line 135 in file startup_stm32f10x_hd.s
       At line 260 in file startup_stm32f10x_hd.s
 
-USART1_IRQHandler 00000016
+USART1_IRQHandler 0000001A
 
 Symbol: USART1_IRQHandler
    Definitions
@@ -1323,7 +1325,7 @@ Symbol: USART1_IRQHandler
       At line 119 in file startup_stm32f10x_hd.s
       At line 244 in file startup_stm32f10x_hd.s
 
-USART2_IRQHandler 00000016
+USART2_IRQHandler 0000001A
 
 Symbol: USART2_IRQHandler
    Definitions
@@ -1338,7 +1340,7 @@ Relocatable symbols
 
       At line 245 in file startup_stm32f10x_hd.s
 
-USART3_IRQHandler 00000016
+USART3_IRQHandler 0000001A
 
 Symbol: USART3_IRQHandler
    Definitions
@@ -1347,7 +1349,7 @@ Symbol: USART3_IRQHandler
       At line 121 in file startup_stm32f10x_hd.s
       At line 246 in file startup_stm32f10x_hd.s
 
-USBWakeUp_IRQHandler 00000016
+USBWakeUp_IRQHandler 0000001A
 
 Symbol: USBWakeUp_IRQHandler
    Definitions
@@ -1356,7 +1358,7 @@ Symbol: USBWakeUp_IRQHandler
       At line 124 in file startup_stm32f10x_hd.s
       At line 249 in file startup_stm32f10x_hd.s
 
-USB_HP_CAN1_TX_IRQHandler 00000016
+USB_HP_CAN1_TX_IRQHandler 0000001A
 
 Symbol: USB_HP_CAN1_TX_IRQHandler
    Definitions
@@ -1365,7 +1367,7 @@ Symbol: USB_HP_CAN1_TX_IRQHandler
       At line 101 in file startup_stm32f10x_hd.s
       At line 226 in file startup_stm32f10x_hd.s
 
-USB_LP_CAN1_RX0_IRQHandler 00000016
+USB_LP_CAN1_RX0_IRQHandler 0000001A
 
 Symbol: USB_LP_CAN1_RX0_IRQHandler
    Definitions
@@ -1374,7 +1376,7 @@ Symbol: USB_LP_CAN1_RX0_IRQHandler
       At line 102 in file startup_stm32f10x_hd.s
       At line 227 in file startup_stm32f10x_hd.s
 
-UsageFault_Handler 0000000C
+UsageFault_Handler 00000010
 
 Symbol: UsageFault_Handler
    Definitions
@@ -1383,7 +1385,7 @@ Symbol: UsageFault_Handler
       At line 70 in file startup_stm32f10x_hd.s
       At line 184 in file startup_stm32f10x_hd.s
 
-WWDG_IRQHandler 00000016
+WWDG_IRQHandler 0000001A
 
 Symbol: WWDG_IRQHandler
    Definitions
@@ -1392,7 +1394,7 @@ Symbol: WWDG_IRQHandler
       At line 82 in file startup_stm32f10x_hd.s
       At line 207 in file startup_stm32f10x_hd.s
 
-__user_initial_stackheap 00000018
+__user_initial_stackheap 0000001C
 
 Symbol: __user_initial_stackheap
 
@@ -1413,7 +1415,7 @@ Comment: __user_initial_stackheap used once
 ARM Macro Assembler    Page 1 Alphabetic symbol ordering
 Absolute symbols
 
-Heap_Size 00000000
+Heap_Size 00000400
 
 Symbol: Heap_Size
    Definitions
@@ -1446,6 +1448,14 @@ Comment: __Vectors_Size used once
 ARM Macro Assembler    Page 1 Alphabetic symbol ordering
 External symbols
 
+SystemInit 00000000
+
+Symbol: SystemInit
+   Definitions
+      At line 154 in file startup_stm32f10x_hd.s
+   Uses
+      At line 155 in file startup_stm32f10x_hd.s
+Comment: SystemInit used once
 __main 00000000
 
 Symbol: __main
@@ -1462,5 +1472,5 @@ Symbol: __use_two_region_memory
    Uses
       None
 Comment: __use_two_region_memory unused
-2 symbols
-424 symbols in table
+3 symbols
+425 symbols in table

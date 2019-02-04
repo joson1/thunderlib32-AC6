@@ -8,3 +8,5 @@
 .\objects\main.o: ..\Lib\inc\usart.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: ..\Lib\inc\iic.h
+.\objects\main.o: ..\Lib\inc\timer.h
+.\objects\main.o: ..\Lib\inc\tim.h

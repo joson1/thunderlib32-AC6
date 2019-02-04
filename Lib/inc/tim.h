@@ -2,22 +2,23 @@
 #define __TIM_H__
 #include "stm32f10x.h"
 
-class tim
+
+extern void (*TIM2_Irq)();
+extern void (*TIM3_Irq)();
+extern void (*TIM4_Irq)();
+extern void (*TIM5_Irq)();
+
+class TIM
 {
-private:
-    
+protected:
+    TIM_TypeDef* TIMn;
 public:
-    tim(TIM_TypeDef* TIMn);
-    ~tim();
+    TIM();
+    TIM(TIM_TypeDef* TIMn);
+    ~TIM();
 };
 
-tim::tim()
-{
-}
 
-tim::~tim()
-{
-}
 
 
 

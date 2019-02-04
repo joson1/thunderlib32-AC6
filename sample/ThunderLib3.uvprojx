@@ -310,7 +310,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>3</Optim>
+            <Optim>2</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>0</OneElfS>
@@ -398,6 +398,16 @@
               <FileName>iic.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Lib\src\iic.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>timer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Lib\src\timer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>tim.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Lib\src\tim.cpp</FilePath>
             </File>
           </Files>
         </Group>

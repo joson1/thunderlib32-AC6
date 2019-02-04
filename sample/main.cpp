@@ -2,26 +2,31 @@
 #include "sys.h"
 #include "usart.h"
 #include "iic.h"
+#include "timer.h"
 
+
+void timerhandler();
+GPIO LED1(GPIOC,GPIO_PIN_13,GPIO_MODE_OUTPUT_PP);
 int main()
 {
 	int a;
-    sys.Clock_Init();
-	usart1.begin(115200);
-    GPIO LED1(GPIOC,GPIO_PIN_13,GPIO_MODE_OUTPUT_PP);
+    TIMER timer1(TIM2,500,timerhandler,3);
+	//usart1.begin(115200);
+   
 	LED1 = 0;
     sys.delay_ms(200);
-	
-	GPIO SCL(GPIOB,GPIO_PIN_7);
-	GPIO SDA(GPIOB,GPIO_PIN_8);
-	
-	IIC myIIC(SCL,SDA);
-	
+	timer1.start();
     while(1){
 		
-		//LED1.toggle();
-		sys.delay_ms(500);
-        
+//		LED1.toggle();
+//		sys.delay_ms(500);
+//        
     }
     
+}
+
+void timerhandler()
+{
+   // GPIO::toggle(GPIOC,GPIO_PIN_13);
+    LED1.toggle();
 }
