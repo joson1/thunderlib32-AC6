@@ -7,7 +7,7 @@
 
 int main()
 {
-    sys.Clock_Init();
+
     GPIO LED1(GPIOC,GPIO_PIN_13,GPIO_MODE_OUTPUT_PP);
     LED1.set(0);
     sys.delay_ms(200);
@@ -110,6 +110,32 @@ GPIO::set(GPIOB,GPIO_PIN_5,0);  //设置GPIOB5为0
 GPIO::set(GPIOB,GPIO_PIN_2|GPIO_PIN_7,0);  // 设置GPIOB2和GPIOB7为0
 
 GPIO::set(GPIOE,GPIO_PIN_All,1); //设置GPIOE所有的引脚为1
+```
+
+
+void GPIO::toggle()
+
+
+翻转当前实例对应IO的电平状态
+
+
+```c++
+
+  GPIO LED1(GPIOC,GPIO_PIN_13,GPIO_MODE_OUTPUT_PP);
+  LED1.toggle();
+
+```
+
+void GPIO::toggle(GPIO_TypeDef* GPIOn,uint16_t Pin);
+
+
+翻转任意IO的电平状态，需要在之前将其初始化为输出
+
+
+```c++
+
+GPIO::toggle(GPIOE,GPIO_PIN_1); //翻转GPIOE1的电平状态
+
 ```
 
 ### 读取引脚状态
