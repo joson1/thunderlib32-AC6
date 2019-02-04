@@ -64,9 +64,10 @@ private:
     static uint8_t  fac_us;							//us延时倍乘数			   
     static uint16_t fac_ms;							//ms延时倍乘数,在ucos下,代表每个节拍的ms数
         
-    static void delay_init(uint8_t SYSCLK);
+    
     static void MYRCC_DeInit(void);
 public:
+    static void delay_init(uint8_t SYSCLK);
     static void Clock_Init();  //时钟初始化  
     static void Soft_Reset();      //系统软复位
     static void Standby();         //待机模式 	

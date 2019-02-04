@@ -1,39 +1,7 @@
 #include "sys.h" 
-//////////////////////////////////////////////////////////////////////////////////	 
-//本程序只供学习使用，未经作者许可，不得用于其它任何用途
-//ALIENTEK STM32开发板
-//系统时钟初始化（适合STM32F10x系列）		   
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//创建日期:2010/1/1
-//版本：V1.9
-//版权所有，盗版必究。
-//Copyright(C) 广州市星翼电子科技有限公司 2009-2019
-//All rights reserved
-//********************************************************************************
-//V1.4修改说明
-//把NVIC KO了,没有使用任何库文件!
-//加入了JTAG_Set函数
-//V1.5 20120322
-//增加void INTX_DISABLE(void)和void INTX_ENABLE(void)两个函数
-//V1.6 20120412
-//1,增加MSR_MSP函数												    
-//2,修改VECT_TAB_RAM的默认偏移,设置为0.
-//V1.7 20120818
-//1,添加ucos支持配置宏_SYSTEM_SUPPORT_UCOS
-//2,修改了注释
-//3,去掉了不常用函数BKP_Write
-//V1.8 20131120
-//1,修改头文件为stm32f10x.h,不再使用stm32f10x_lib.h及其相关头文件
-//V1.9 20150109
-//1,修改头文件为MY_NVIC_Init函数部分代码以支持向量号大于63的中断的设置
-//2,修改WFI_SET/INTX_DISABLE/INTX_ENABLE等函数的实现方式
-//V2.0 20150322
-//修改_SYSTEM_SUPPORT_UCOS为_SYSTEM_SUPPORT_OS
-////////////////////////////////////////////////////////////////////////////////// 	  
 
-uint8_t _sys::fac_us=0;
-uint16_t _sys::fac_ms=0;
+uint8_t _sys::fac_us=9;
+uint16_t _sys::fac_ms=9000;
 
 //设置向量表偏移地址
 //NVIC_VectTab:基址
@@ -199,8 +167,9 @@ void _sys::Clock_Init()
 	{   
 		temp=RCC->CFGR>>2;
 		temp&=0x03;
-	}    
-	delay_init(72);
+	}
+	SysTick->CTRL&=~(1<<2);
+
 }		    
 
 
@@ -208,7 +177,7 @@ void _sys::Clock_Init()
 void _sys::delay_init(uint8_t SYSCLK)
 {
 
- 	SysTick->CTRL&=~(1<<2);					//SYSTICK使用外部时钟源	 
+ 						//SYSTICK使用外部时钟源	 
 	fac_us=SYSCLK/8;						//不论是否使用OS,fac_us都需要使用
 
 	fac_ms=(u16)fac_us*1000;				//非OS下,代表每个ms需要的systick时钟数   
@@ -251,5 +220,8 @@ void _sys::delay_ms(u16 nms)
 
 
 
-
+void SystemInit()
+{
+	_sys::Clock_Init();
+}
 
