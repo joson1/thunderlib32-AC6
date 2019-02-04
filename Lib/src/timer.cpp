@@ -42,6 +42,7 @@ TIMER::TIMER(TIM_TypeDef *TIMx, uint16_t ms, void (*event_handler)(), uint8_t Pr
     NVIC->IP[n] = (Priority << 4);       //中断优先级设置
     NVIC->ISER[n / 32] |= 1 << (n % 32); //中断通道使能
     TIMx->DIER |= 0X0001;                //开启定时器更新中断
+    TIMx->SR &= 0xfe;
 }
 TIMER::TIMER()
 {
