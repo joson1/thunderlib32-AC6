@@ -14,7 +14,7 @@ stm32f103
 
 int main()
 {
-    sys.Clock_Init();
+
     GPIO LED1(GPIOC,GPIO_PIN_13,GPIO_MODE_OUTPUT_PP);
     LED1.set(0);
     sys.delay_ms(200);
