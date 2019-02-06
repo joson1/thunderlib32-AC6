@@ -10,9 +10,9 @@ GPIO LED1(GPIOC,GPIO_PIN_13,GPIO_MODE_OUTPUT_PP);
 int main()
 {
 	int a;
-    TIMER timer1(TIM2,500,timerhandler,3);
+    TIMER timer1(TIM4,500,timerhandler,3);
 	//usart1.begin(115200);
-   
+
 	LED1 = 0;
     sys.delay_ms(200);
 	timer1.start();

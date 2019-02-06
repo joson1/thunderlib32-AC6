@@ -1,17 +1,17 @@
 Dependencies for Project 'ThunderLib3', Target 'Target 1': (DO NOT MODIFY !)
-F (..\Lib\src\gpio.cpp)(0x5C56EF8B)(--cpp -c --cpu Cortex-M3 -g -O1 --apcs=interwork -I ..\Lib\inc -I ..\Lib --cpp11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
+F (..\Lib\src\gpio.cpp)(0x5C56EF8B)(--cpp -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Lib\inc -I ..\Lib --CPP11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
 I (..\Lib\inc\gpio.h)(0x5C56EF94)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\Lib\stm32f10x.h)(0x4D783CB4)
 I (..\Lib\core_cm3.h)(0x4D523B58)
 I (..\Lib\system_stm32f10x.h)(0x4D783CAA)
-F (..\Lib\src\sys.cpp)(0x5C579995)(--cpp -c --cpu Cortex-M3 -g -O1 --apcs=interwork -I ..\Lib\inc -I ..\Lib --cpp11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\sys.o --omf_browse .\objects\sys.crf --depend .\objects\sys.d)
+F (..\Lib\src\sys.cpp)(0x5C579995)(--cpp -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Lib\inc -I ..\Lib --CPP11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\sys.o --omf_browse .\objects\sys.crf --depend .\objects\sys.d)
 I (..\Lib\inc\sys.h)(0x5C56F548)
 I (..\Lib\stm32f10x.h)(0x4D783CB4)
 I (..\Lib\core_cm3.h)(0x4D523B58)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\Lib\system_stm32f10x.h)(0x4D783CAA)
-F (..\Lib\src\usart.cpp)(0x5C4D0D43)(--cpp -c --cpu Cortex-M3 -g -O1 --apcs=interwork -I ..\Lib\inc -I ..\Lib --cpp11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\usart.o --omf_browse .\objects\usart.crf --depend .\objects\usart.d)
+F (..\Lib\src\usart.cpp)(0x5C4D0D43)(--cpp -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Lib\inc -I ..\Lib --CPP11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\usart.o --omf_browse .\objects\usart.crf --depend .\objects\usart.d)
 I (..\Lib\inc\usart.h)(0x5C4C286A)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x57F606B8)
@@ -23,7 +23,7 @@ I (D:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x57F606B8)
 I (D:\Keil_v5\ARM\ARMCC\include\time.h)(0x57F606B8)
 I (D:\Keil_v5\ARM\ARMCC\include\rt_misc.h)(0x57F606B8)
 I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F606B8)
-F (..\Lib\src\iic.cpp)(0x5C4FB4C4)(--cpp -c --cpu Cortex-M3 -g -O1 --apcs=interwork -I ..\Lib\inc -I ..\Lib --cpp11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\iic.o --omf_browse .\objects\iic.crf --depend .\objects\iic.d)
+F (..\Lib\src\iic.cpp)(0x5C4FB4C4)(--cpp -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Lib\inc -I ..\Lib --CPP11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\iic.o --omf_browse .\objects\iic.crf --depend .\objects\iic.d)
 I (..\Lib\inc\iic.h)(0x5C56BAC7)
 I (..\Lib\inc\gpio.h)(0x5C56EF94)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
@@ -31,22 +31,22 @@ I (..\Lib\stm32f10x.h)(0x4D783CB4)
 I (..\Lib\core_cm3.h)(0x4D523B58)
 I (..\Lib\system_stm32f10x.h)(0x4D783CAA)
 I (..\Lib\inc\sys.h)(0x5C56F548)
-F (..\Lib\src\timer.cpp)(0x5C584E2E)(--cpp -c --cpu Cortex-M3 -g -O1 --apcs=interwork -I ..\Lib\inc -I ..\Lib --cpp11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
+F (..\Lib\src\timer.cpp)(0x5C5A37E4)(--cpp -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Lib\inc -I ..\Lib --CPP11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
 I (..\Lib\inc\timer.h)(0x5C56C464)
-I (..\Lib\inc\tim.h)(0x5C56C528)
+I (..\Lib\inc\tim.h)(0x5C59079C)
 I (..\Lib\stm32f10x.h)(0x4D783CB4)
 I (..\Lib\core_cm3.h)(0x4D523B58)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\Lib\system_stm32f10x.h)(0x4D783CAA)
 I (..\Lib\inc\sys.h)(0x5C56F548)
-F (..\Lib\src\tim.cpp)(0x5C56DDC4)(--cpp -c --cpu Cortex-M3 -g -O1 --apcs=interwork -I ..\Lib\inc -I ..\Lib --cpp11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\tim.o --omf_browse .\objects\tim.crf --depend .\objects\tim.d)
-I (..\Lib\inc\tim.h)(0x5C56C528)
+F (..\Lib\src\tim.cpp)(0x5C590871)(--cpp -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Lib\inc -I ..\Lib --CPP11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\tim.o --omf_browse .\objects\tim.crf --depend .\objects\tim.d)
+I (..\Lib\inc\tim.h)(0x5C59079C)
 I (..\Lib\stm32f10x.h)(0x4D783CB4)
 I (..\Lib\core_cm3.h)(0x4D523B58)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\Lib\system_stm32f10x.h)(0x4D783CAA)
 I (D:\Keil_v5\ARM\ARMCC\include\STDDEF.H)(0x57F606B8)
-F (.\main.cpp)(0x5C584EFB)(--cpp -c --cpu Cortex-M3 -g -O1 --apcs=interwork -I ..\Lib\inc -I ..\Lib --cpp11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.cpp)(0x5C5A3858)(--cpp -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\Lib\inc -I ..\Lib --CPP11-I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (..\Lib\inc\gpio.h)(0x5C56EF94)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\Lib\stm32f10x.h)(0x4D783CB4)
@@ -57,5 +57,5 @@ I (..\Lib\inc\usart.h)(0x5C4C286A)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x57F606B8)
 I (..\Lib\inc\iic.h)(0x5C56BAC7)
 I (..\Lib\inc\timer.h)(0x5C56C464)
-I (..\Lib\inc\tim.h)(0x5C56C528)
-F (.\startup_stm32f10x_hd.s)(0x5C56F10E)(--cpu Cortex-M3 -g --apcs=interwork -I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 523" --pd "STM32F10X_MD SETA 1"--list .\listings\startup_stm32f10x_hd.lst --xref -o .\objects\startup_stm32f10x_hd.o --depend .\objects\startup_stm32f10x_hd.d)
+I (..\Lib\inc\tim.h)(0x5C59079C)
+F (.\startup_stm32f10x_hd.s)(0x5C56F10E)(--cpu Cortex-M3 -g --apcs=interwork -I.\RTE\_Target_1-ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-ID:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 523" --pd "STM32F10X_MD SETA 1"--list .\listings\startup_stm32f10x_hd.lst --xref -o .\objects\startup_stm32f10x_hd.o --depend .\objects\startup_stm32f10x_hd.d)
