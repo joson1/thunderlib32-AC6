@@ -69,6 +69,24 @@ void PWM::set_duty(float percentage,uint8_t channel)
     }
 	
 }
+
+void PWM::set_duty(TIM_TypeDef* TIMx,float percentage,uint8_t channel)
+{
+	uint16_t ARR = TIMx->ARR +1;
+	uint16_t CCRx;
+	
+	percentage = (float)percentage/100;
+	CCRx = (float)ARR*percentage;
+	for(uint8_t i=0;i<4;++i)
+    {
+        if(channel&0x01)
+        {
+            *((uint32_t *)(((uint32_t)TIMx+0X34)+(i)*4)) = CCRx;
+        }
+        channel>>=1;
+    }
+}
+
 void PWM::open(float percentage,uint8_t channel)
 {
     set_duty(percentage,channel);
@@ -82,7 +100,18 @@ void PWM::open(float percentage,uint8_t channel)
     }
 
 }
-
+void PWM::open(TIM_TypeDef* TIMx,float percentage,uint8_t channel)
+{
+    set_duty(TIMx,percentage,channel);
+    for(uint8_t i = 0; i < 4; ++i)
+    {
+        if(channel&0x01)
+        {
+     	TIMx->CCER &= (1<<(4*(i)));   
+        }
+        channel>>=1;
+    }	
+}
 void PWM::close(uint8_t channel)
 {
     for(uint8_t i = 0; i < 4; ++i)
@@ -94,7 +123,17 @@ void PWM::close(uint8_t channel)
         channel>>=1;
     } 
 }
-
+void PWM::close(TIM_TypeDef* TIMx,uint8_t channel)
+{
+    for(uint8_t i = 0; i < 4; ++i)
+    {
+        if(channel&0x01)
+        {
+     	TIMx->CCER &= ~(1<<(4*(i)));   
+        }
+        channel>>=1;
+    } 
+}
 
 void PWM::init_channel(uint8_t ch)
 {

@@ -23,8 +23,11 @@ public:
     ~PWM();
     static void Init(TIM_TypeDef* TIMx,PWM_InitTypeDef* init_struct);
     void set_duty(float percentage,uint8_t channel);
+    static void set_duty(TIM_TypeDef* TIMx,float percentage,uint8_t channel);
     void open(float percentage,uint8_t channel);
+    static void open(TIM_TypeDef* TIMx,float percentage,uint8_t channel);
     void close(uint8_t channel);
+    static void close(TIM_TypeDef* TIMx,uint8_t channel);
 
 
 
