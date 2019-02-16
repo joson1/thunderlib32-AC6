@@ -21,6 +21,81 @@ TIM::TIM()
 TIM::~TIM()
 {
 }
+
+void TIM::set_Remap(uint16_t Remap)
+{
+    
+
+    if((uint32_t)this->TIMn<(uint32_t)APB2PERIPH_BASE)
+    {
+        uint8_t timx = ((uint32_t)this->TIMn - (uint32_t)0x40000000) >>10;
+        switch (timx)
+        {
+       
+        case 0:
+            AFIO->MAPR &= ~(Remap<<8);
+            AFIO->MAPR |=  (Remap<<8);
+            break;
+        case 1:
+            AFIO->MAPR &= ~(Remap<<10);
+            AFIO->MAPR |=  (Remap<<10);
+            break;
+        case 2:
+            AFIO->MAPR &= ~(Remap<<12);
+            AFIO->MAPR |=  (Remap<<12);
+            break;
+        case 3:
+            AFIO->MAPR &= ~(Remap<<16);
+            AFIO->MAPR |=  (Remap<<16);
+            break;
+    
+        default:
+            break;
+        }
+    }else
+    {
+        AFIO->MAPR &= ~(Remap<<6);
+        AFIO->MAPR |=  (Remap<<6);
+    }
+    
+
+}
+
+void TIM::set_Remap(TIM_TypeDef* TIMn,uint16_t Remap)
+{
+    if((uint32_t)TIMn<(uint32_t)APB2PERIPH_BASE)
+    {
+        uint8_t timx = ((uint32_t)TIMn - (uint32_t)0x40000000) >>10;
+        switch (timx)
+        {
+       
+        case 0:
+            AFIO->MAPR &= ~(Remap<<8);
+            AFIO->MAPR |=  (Remap<<8);
+            break;
+        case 1:
+            AFIO->MAPR &= ~(Remap<<10);
+            AFIO->MAPR |=  (Remap<<10);
+            break;
+        case 2:
+            AFIO->MAPR &= ~(Remap<<12);
+            AFIO->MAPR |=  (Remap<<12);
+            break;
+        case 3:
+            AFIO->MAPR &= ~(Remap<<16);
+            AFIO->MAPR |=  (Remap<<16);
+            break;
+    
+        default:
+            break;
+        }
+    }else
+    {
+        AFIO->MAPR &= ~(Remap<<6);
+        AFIO->MAPR |=  (Remap<<6);
+    }
+}
+
 extern "C"{
 
 void TIM2_IRQHandler()

@@ -5,6 +5,7 @@
 ".\objects\iic.o"
 ".\objects\timer.o"
 ".\objects\tim.o"
+".\objects\pwm.o"
 ".\objects\main.o"
 ".\objects\startup_stm32f10x_hd.o"
 --scatter ".\Objects\ThunderLib3.sct"

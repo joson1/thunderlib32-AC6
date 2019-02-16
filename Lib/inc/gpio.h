@@ -89,8 +89,9 @@
 
 typedef struct
 {
-  uint16_t Pin;
-  uint8_t Mode;
+  uint16_t Pin = 0;
+  uint8_t Mode = 0;
+
 }GPIO_InitTypeDef;
 
 class GPIO

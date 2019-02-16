@@ -10,3 +10,4 @@
 .\objects\main.o: ..\Lib\inc\iic.h
 .\objects\main.o: ..\Lib\inc\timer.h
 .\objects\main.o: ..\Lib\inc\tim.h
+.\objects\main.o: ..\Lib\inc\pwm.h
