@@ -11,7 +11,7 @@ typedef struct
 
 
 
-class PWM : TIM
+class PWM : public TIM
 {
 private:
     uint8_t channel;

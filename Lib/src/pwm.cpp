@@ -6,17 +6,17 @@ PWM::PWM(TIM_TypeDef* TIMx,uint8_t channel,uint16_t Freq)
     uint8_t chs = channel;
     this->TIMn = TIMx;
     this->channel = channel;
-
+	RCC->APB2ENR |= 0X0001;      //启用端口重映射：
 	RCC->APB1ENR |= 1<<(((uint32_t)TIMx-(uint32_t)TIM2)/0X0400);    //使能TIMx的时钟
 	TIMx->PSC = 23;     								  //定时器计数频率默认3M  HZ
 	TIMx->ARR = 3000000/Freq -1;						  //100~60000
 	TIMx->CR1 &= 0XFFEF;								  //向上计数
 
-	for( uint8_t i = 0; i < 4; i++)
+	for( uint8_t i = 1; i < 5; i++)
 	{
 		if(chs&0x01)
 		{
-            init_channel(chs);
+            init_channel(i);
 		}
 		chs>>=1;
 		
@@ -30,16 +30,17 @@ PWM::PWM(TIM_TypeDef* TIMx,uint8_t channel,uint16_t Freq,uint16_t Remap)
     this->TIMn = TIMx;
     this->channel = channel;
 
+	RCC->APB2ENR |= 0X0001;      //启用端口重映射：
 	RCC->APB1ENR |= 1<<(((uint32_t)TIMx-(uint32_t)TIM2)/0X0400);    //使能TIMx的时钟
 	TIMx->PSC = 23;     								  //定时器计数频率默认3M  HZ
 	TIMx->ARR = 3000000/Freq -1;						  //100~60000
 	TIMx->CR1 &= 0XFFEF;								  //向上计数
 
-	for( uint8_t i = 0; i < 16; i++)
+	for( uint8_t i = 1; i < 5; i++)
 	{
 		if(chs&0x01)
 		{
-            init_channel(chs);
+            init_channel(i);
 		}
 		chs>>=1;
 		
@@ -90,11 +91,11 @@ void PWM::set_duty(TIM_TypeDef* TIMx,float percentage,uint8_t channel)
 void PWM::open(float percentage,uint8_t channel)
 {
     set_duty(percentage,channel);
-    for(uint8_t i = 0; i < 4; ++i)
+    for(uint8_t i = 0; i < 4; i++)
     {
         if(channel&0x01)
         {
-     	this->TIMn->CCER &= (1<<(4*(i)));   
+     	this->TIMn->CCER |= (1<<(4*(i)));   
         }
         channel>>=1;
     }
@@ -103,18 +104,18 @@ void PWM::open(float percentage,uint8_t channel)
 void PWM::open(TIM_TypeDef* TIMx,float percentage,uint8_t channel)
 {
     set_duty(TIMx,percentage,channel);
-    for(uint8_t i = 0; i < 4; ++i)
+    for(uint8_t i = 0; i < 4; i++)
     {
         if(channel&0x01)
         {
-     	TIMx->CCER &= (1<<(4*(i)));   
+     	TIMx->CCER |= (1<<(4*(i)));   
         }
         channel>>=1;
     }	
 }
 void PWM::close(uint8_t channel)
 {
-    for(uint8_t i = 0; i < 4; ++i)
+    for(uint8_t i = 0; i < 4; i++)
     {
         if(channel&0x01)
         {
@@ -125,7 +126,7 @@ void PWM::close(uint8_t channel)
 }
 void PWM::close(TIM_TypeDef* TIMx,uint8_t channel)
 {
-    for(uint8_t i = 0; i < 4; ++i)
+    for(uint8_t i = 0; i < 4; i++)
     {
         if(channel&0x01)
         {

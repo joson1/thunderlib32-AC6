@@ -9,9 +9,10 @@ void timerhandler();
 GPIO LED1(GPIOC,GPIO_PIN_13,GPIO_MODE_OUTPUT_PP);
 int main()
 {
-    PWM pwm1(TIM2,TIM_CHANNEL_1,100);
-    pwm1.open(50,TIM_CHANNEL_1);
-	LED1 = 0;
+    PWM pwm1(TIM3,TIM_CHANNEL_2,100);
+    pwm1.open(50,TIM_CHANNEL_2);
+	pwm1.set_Remap(TIM3_REMAP_FULL);
+	LED1 = 1;
     sys.delay_ms(200);
 
     while(1){
