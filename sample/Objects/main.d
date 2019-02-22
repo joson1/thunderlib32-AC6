@@ -5,9 +5,4 @@
 .\objects\main.o: ..\Lib\core_cm3.h
 .\objects\main.o: ..\Lib\system_stm32f10x.h
 .\objects\main.o: ..\Lib\inc\sys.h
-.\objects\main.o: ..\Lib\inc\usart.h
-.\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\main.o: ..\Lib\inc\iic.h
-.\objects\main.o: ..\Lib\inc\timer.h
-.\objects\main.o: ..\Lib\inc\tim.h
-.\objects\main.o: ..\Lib\inc\pwm.h
+.\objects\main.o: ..\Lib\inc\spi.h
