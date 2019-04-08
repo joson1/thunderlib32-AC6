@@ -1,0 +1,9 @@
+..\staticlib\tim.o: ..\Lib\src\tim.cpp
+..\staticlib\tim.o: ..\Lib\inc\tim.h
+..\staticlib\tim.o: D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h
+..\staticlib\tim.o: D:\Keil_v5\ARM\CMSIS\Include\core_cm3.h
+..\staticlib\tim.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\staticlib\tim.o: D:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+..\staticlib\tim.o: D:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+..\staticlib\tim.o: D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h
+..\staticlib\tim.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\STDDEF.H

@@ -18,7 +18,7 @@ public:
     void init(uint8_t SPI_MODE,uint8_t data_width);
     void open(uint8_t Speed);
     void close();
-    uint8_t transfer(uint8_t data);
+    uint16_t transfer(uint16_t data);
 } spi1;
 
 static class _spi2

@@ -5,14 +5,14 @@ void _spi1::init(uint8_t SPI_MODE,uint8_t data_width)
 {
     GPIO_InitTypeDef gpio_init;
 
-    gpio_init.Mode = GPIO_MODE_OUTPUT_PP;
-    gpio_init.Pin = GPIO_PIN_12;
-    GPIO::Init(GPIOB,&gpio_init);
+    // gpio_init.Mode = GPIO_MODE_OUTPUT_PP;
+    // gpio_init.Pin = GPIO_PIN_5;
+    // GPIO::Init(GPIOA,&gpio_init);
     gpio_init.Mode = GPIO_MODE_OUTPUT_FF;
-    gpio_init.Pin = GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_13;
-    GPIO::Init(GPIOB,&gpio_init);
+    gpio_init.Pin = GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_5;
+    GPIO::Init(GPIOA,&gpio_init);
 
-    GPIO::set(GPIOB,GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14,1);
+    GPIO::set(GPIOA,GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7,1);
 
     RCC->APB2ENR |= 1<<12;
 
@@ -36,18 +36,18 @@ void _spi1::close()
     SPI1->CR1 &= ~(1<<6);
 }
 
-uint8_t _spi1::transfer(uint8_t data)
+uint16_t _spi1::transfer(uint16_t data)
 {
 	u16 val=0;
-	while(!(SPI1->SR&0x02))    //等待上一次发送完成
+	while(!(SPI1->SR&0x02))    
 	{
 		val++;
 		if(val>=0XFFFE)
-			return 0;//超时异常
+			return 0;
 	}
 	SPI1->DR = data;
 	val = 0;
-	while(!(SPI1->SR&0x01))    //等待接收完成
+	while(!(SPI1->SR&0x01))    
 	{
 		val++;
 		if(val>=0XFFFE)
@@ -98,7 +98,7 @@ void _spi2::close()
 uint8_t _spi2::transfer(uint8_t data)
 {
 	u16 val=0;
-	while(!(SPI2->SR&0x02))    //等待上一次发送完成
+	while(!(SPI2->SR&0x02))    //等待上一次发送完�?
 	{
 		val++;
 		if(val>=0XFFFE)

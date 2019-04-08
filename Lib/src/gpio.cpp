@@ -221,9 +221,17 @@ void GPIO::operator = (const uint16_t state)
 
 }
 
-uint16_t GPIO::operator=(const GPIO &P)
+// uint16_t GPIO::operator=(const GPIO &P)
+// {
+// 	return this->read(this->GPIOn,this->Pin);
+
+// }
+
+GPIO::GPIO(const GPIO& C)
 {
-	return this->read(this->GPIOn,this->Pin);
+	GPIOn = C.GPIOn;
+	Pin = C.Pin;
+
 
 }
 

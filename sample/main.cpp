@@ -8,7 +8,7 @@ int main()
     GPIO CS(GPIOB,GPIO_PIN_12,GPIO_MODE_OUTPUT_PP);
     LED1 = 0;
     sys.delay_ms(200);
-    spi2.init(SPI_MODE_2,SPI_DATAWIDTH_8);
+    spi2.init(SPI_MODE_4,SPI_DATAWIDTH_8);
     spi2.open(1);
     while (1)
     {
@@ -16,5 +16,6 @@ int main()
         spi2.transfer(0xff);
         CS=1;
         sys.delay_ms(500);
+        LED1.toggle();
     }
 }

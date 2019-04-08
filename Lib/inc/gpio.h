@@ -97,15 +97,17 @@ typedef struct
 class GPIO
 {
 private:
-    GPIO_TypeDef* GPIOn;
-    uint16_t Pin;
+
     static void Init_Pin(GPIO_TypeDef *GPIOx, uint8_t pin, uint8_t mode);
     /* data */
 public:
     friend class IIC; 
+    GPIO_TypeDef* GPIOn;
+    uint16_t Pin;
     GPIO();
     GPIO(GPIO_TypeDef* GPIOX,uint16_t Pin,unsigned char mode);
     GPIO(GPIO_TypeDef* GPIOX,uint16_t Pin);
+    GPIO(const GPIO& C);
     ~GPIO();
     static void Init(GPIO_TypeDef* GPIOn,GPIO_InitTypeDef* Init_struct);
     static uint16_t read(GPIO_TypeDef* GPIOn,uint16_t Pin);
@@ -116,7 +118,7 @@ public:
     void toggle();
     void setmode(unsigned char mode);
     void operator=(const uint16_t state);
-    uint16_t operator=(const GPIO &P);
+    // uint16_t operator=(const GPIO &P);
 };
 
 

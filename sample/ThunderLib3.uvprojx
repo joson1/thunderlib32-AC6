@@ -48,10 +48,10 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\Objects\</OutputDirectory>
+          <OutputDirectory>..\staticlib\</OutputDirectory>
           <OutputName>ThunderLib3</OutputName>
-          <CreateExecutable>1</CreateExecutable>
-          <CreateLib>0</CreateLib>
+          <CreateExecutable>0</CreateExecutable>
+          <CreateLib>1</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
@@ -311,7 +311,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>4</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>0</OneElfS>
@@ -323,9 +323,9 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <useXO>0</useXO>
-            <v6Lang>6</v6Lang>
+            <v6Lang>3</v6Lang>
             <v6LangP>1</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
@@ -333,10 +333,10 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls>--CPP11</MiscControls>
+              <MiscControls>--cpp11</MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Lib\inc;..\Lib</IncludePath>
+              <IncludePath>..\Lib\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -386,24 +386,24 @@
               <FilePath>..\Lib\src\gpio.cpp</FilePath>
             </File>
             <File>
-              <FileName>sys.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Lib\src\sys.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>usart.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Lib\src\usart.cpp</FilePath>
-            </File>
-            <File>
               <FileName>iic.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Lib\src\iic.cpp</FilePath>
             </File>
             <File>
-              <FileName>timer.cpp</FileName>
+              <FileName>pwm.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\Lib\src\timer.cpp</FilePath>
+              <FilePath>..\Lib\src\pwm.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>spi.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Lib\src\spi.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>sys.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Lib\src\sys.cpp</FilePath>
             </File>
             <File>
               <FileName>tim.cpp</FileName>
@@ -411,9 +411,14 @@
               <FilePath>..\Lib\src\tim.cpp</FilePath>
             </File>
             <File>
-              <FileName>pwm.cpp</FileName>
+              <FileName>timer.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\Lib\src\pwm.cpp</FilePath>
+              <FilePath>..\Lib\src\timer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usart.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Lib\src\usart.cpp</FilePath>
             </File>
           </Files>
         </Group>

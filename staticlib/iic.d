@@ -1,0 +1,10 @@
+..\staticlib\iic.o: ..\Lib\src\iic.cpp
+..\staticlib\iic.o: ..\Lib\inc\iic.h
+..\staticlib\iic.o: ..\Lib\inc\gpio.h
+..\staticlib\iic.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\staticlib\iic.o: D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h
+..\staticlib\iic.o: D:\Keil_v5\ARM\CMSIS\Include\core_cm3.h
+..\staticlib\iic.o: D:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+..\staticlib\iic.o: D:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+..\staticlib\iic.o: D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h
+..\staticlib\iic.o: ..\Lib\inc\sys.h

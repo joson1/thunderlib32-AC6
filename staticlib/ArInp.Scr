@@ -1,0 +1,11 @@
+--create ..\staticlib\ThunderLib3.lib
+..\staticlib\gpio.o
+..\staticlib\iic.o
+..\staticlib\pwm.o
+..\staticlib\spi.o
+..\staticlib\sys.o
+..\staticlib\tim.o
+..\staticlib\timer.o
+..\staticlib\usart.o
+..\staticlib\main.o
+..\staticlib\startup_stm32f10x_hd.o
