@@ -111,10 +111,14 @@ void _sys::INTX_ENABLE(void)
 }
 //设置栈顶地址
 //addr:栈顶地址
-__asm void _sys::MSR_MSP(u32 addr) 
+void _sys::MSR_MSP(u32 addr) 
 {
-    MSR MSP, r0 			//set Main Stack value
-    BX r14
+    //set Main Stack value
+    __asm (
+    " MSR MSP, r0 \n" 			
+    "BX r14"
+    );
+
 }
 
 //进入待机模式	  

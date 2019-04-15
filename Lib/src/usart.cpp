@@ -4,8 +4,8 @@
 #include <time.h>
 #include <rt_misc.h>
 
-
-#pragma import(__use_no_semihosting_swi)
+__asm(".global __use_no_semihosting_swi");
+//#pragma import(__use_no_semihosting_swi)
 struct std::__FILE { int handle; /* Add whatever you need here */ };
 	
 std::FILE std::__stdin;
